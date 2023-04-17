@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.myapplication.ui.fragments.SearchScreenFragment
 import com.juanarton.moviecatalog.databinding.ActivityMainBinding
-import com.juanarton.moviecatalog.ui.fragments.HomeScreenFragment
+import com.juanarton.moviecatalog.ui.fragments.home.PopularMovieFragment
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +20,12 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        binding?.bottomBar?.setOnTabSelectListener(object  : AnimatedBottomBar.OnTabSelectListener{
+        fragmentBuilder(PopularMovieFragment())
+
+        val bottomNavBar = binding?.bottomBar
+        bottomNavBar?.selectTab(bottomNavBar.tabs[0])
+
+        bottomNavBar?.setOnTabSelectListener(object  : AnimatedBottomBar.OnTabSelectListener{
             override fun onTabSelected(
                 lastIndex: Int,
                 lastTab: AnimatedBottomBar.Tab?,
@@ -28,8 +33,8 @@ class MainActivity : AppCompatActivity() {
                 newTab: AnimatedBottomBar.Tab
             ) {
                 when(newIndex){
-                    0 -> fragmentBuilder(SearchScreenFragment())
-                    1 -> fragmentBuilder(HomeScreenFragment())
+                    0 -> fragmentBuilder(PopularMovieFragment())
+                    1 -> fragmentBuilder(SearchScreenFragment())
                     2 -> moveToFavoriteFragment()
                 }
             }

@@ -1,4 +1,4 @@
-package com.juanarton.moviecatalog.ui.fragments
+package com.juanarton.moviecatalog.ui.fragments.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

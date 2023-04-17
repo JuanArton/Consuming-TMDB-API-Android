@@ -10,14 +10,37 @@
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFF"
+        android:background="@color/black"
+        app:abb_tabColor="@color/grey"
         app:abb_indicatorAppearance="round"
         app:abb_indicatorHeight="4dp"
         app:abb_indicatorMargin="16dp"
         app:abb_selectedIndex="1"
+        app:abb_textStyle="bold"
+        app:abb_tabAnimation="slide"
+        app:abb_animationInterpolator="@android:anim/overshoot_interpolator"
+        app:abb_rippleEnabled="true"
+        app:abb_textSize="16sp"
         app:abb_selectedTabType="text"
         app:abb_tabs="@menu/bottom_navigation_menu"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/app_name"
+        android:textColor="@color/orange"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -26,6 +49,6 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/mode" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
