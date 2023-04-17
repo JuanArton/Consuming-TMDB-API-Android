@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TMDB Catalog</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_favoritemodule">FavoriteModule</string>
+    <string name="favorite">Favorite</string>
+    <string name="feed">Feed</string>
+    <string name="search">Search</string>
+    <string name="title_core">core</string>
+    <string name="title_favorite">favorite</string>
+</resources>
