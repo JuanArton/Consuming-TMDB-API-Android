@@ -20,14 +20,14 @@ abstract class NetworkBoundRes<ResultType, RequestType> {
                 }
 
                 is APIResponse.Error -> {
-                    emit(Resource.Error<ResultType>(apiResponse.errorMessage))
+                    emit(Resource.Error(apiResponse.errorMessage))
                 }
             }
         }
 
-    protected abstract fun loadFromNetwork(data: RequestType): Flow<ResultType>
-
     protected abstract suspend fun createCall(): Flow<APIResponse<RequestType>>
+
+    protected abstract fun loadFromNetwork(data: RequestType): Flow<ResultType>
 
     fun asFlow(): Flow<Resource<ResultType>> = result
 }

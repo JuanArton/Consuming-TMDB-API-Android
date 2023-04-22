@@ -1,28 +1,39 @@
 package com.juanarton.core.data.source.remote
 
 import android.util.Log
-import com.example.core.data.api.PopularMovieResponse
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.juanarton.core.BuildConfig
 import com.juanarton.core.data.api.API
-import com.juanarton.core.data.api.APIResponse
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import com.juanarton.core.data.domain.model.Movie
+import com.juanarton.core.data.utils.DataMapper
 
-class RemoteDataSource() {
-    suspend fun getPopularMovie(apiKey: String, language: String, page: Int): Flow<APIResponse<List<PopularMovieResponse>>> =
-        flow{
-            try{
-                val recommendedMovie = API.services.getPopularMovie(apiKey, language, page).recomendedMovie
-                if (recommendedMovie.isEmpty()){
-                    emit(APIResponse.Error(null))
-                }else{
-                    emit(APIResponse.Success(recommendedMovie))
+class RemoteDataSource{
+
+    fun getPopularMovie(): PagingSource<Int, Movie> {
+        return object : PagingSource<Int, Movie>(){
+            override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
+                return try {
+                    val position = params.key ?: 1
+                    val response = API.services.getPopularMovie(BuildConfig.API_KEY, "en", position).popularMovie
+                    val movie = DataMapper.mapMovieResponseToMovieDomain1(response)
+                    LoadResult.Page(
+                        data = movie,
+                        prevKey = if (position == 1) null else position - 1,
+                        nextKey = position + 1
+                    )
+                } catch (e: java.lang.Exception) {
+                    Log.d("Pagingtest", e.toString())
+                    LoadResult.Error(e)
                 }
-            }catch (e: Exception){
-                emit(APIResponse.Error(e.toString()))
-                e.localizedMessage?.let { Log.e(RemoteDataSource::class.java.simpleName, it) }
             }
-        }.flowOn(Dispatchers.IO)
 
+            override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
+                return state.anchorPosition?.let { anchorPosition ->
+                    state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
+                        ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
+                }
+            }
+        }
+    }
 }

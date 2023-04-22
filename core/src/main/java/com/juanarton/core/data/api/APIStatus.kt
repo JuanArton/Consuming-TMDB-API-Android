@@ -1,4 +1,4 @@
-package com.example.core.data.api
+package com.juanarton.core.data.api
 
 sealed class ApiStatus<out T> {
     data class Success<out T>(val data: T) : ApiStatus<T>()

@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.fragments
+package com.juanarton.moviecatalog.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

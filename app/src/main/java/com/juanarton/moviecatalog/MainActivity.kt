@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.example.myapplication.ui.fragments.SearchScreenFragment
+import com.juanarton.moviecatalog.ui.fragments.SearchScreenFragment
 import com.juanarton.moviecatalog.databinding.ActivityMainBinding
 import com.juanarton.moviecatalog.ui.fragments.home.PopularMovieFragment
 import nl.joery.animatedbottombar.AnimatedBottomBar

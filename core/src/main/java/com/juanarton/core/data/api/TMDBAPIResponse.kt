@@ -1,10 +1,12 @@
 package com.juanarton.core.data.api
 
-import com.example.core.data.api.PopularMovieResponse
 import com.google.gson.annotations.SerializedName
 
 
 data class TMDBAPIResponse (
+    @field:SerializedName("page")
+    val page: Int,
+
     @field:SerializedName("results")
-    val recomendedMovie: List<PopularMovieResponse>
+    val popularMovie: List<PopularMovieResponse>
 )

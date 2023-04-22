@@ -1,8 +1,11 @@
 package com.juanarton.core.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.juanarton.core.BuildConfig
@@ -10,8 +13,17 @@ import com.juanarton.core.R
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.databinding.ItemViewBinding
 
-class RecyclerAdapter(private val onClick: (Movie) -> Unit, private val movieList: List<Movie>):
-    RecyclerView.Adapter<RecyclerAdapter.GridViewHolder>(){
+class MoviePagingAdapter: PagingDataAdapter<Movie, MoviePagingAdapter.GridViewHolder>(MovieComparator) {
+
+    object MovieComparator: DiffUtil.ItemCallback<Movie>() {
+        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+            return oldItem == newItem
+        }
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -21,16 +33,16 @@ class RecyclerAdapter(private val onClick: (Movie) -> Unit, private val movieLis
         return GridViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerAdapter.GridViewHolder, position: Int) {
-        val movieData = movieList[position]
-        holder.bind(movieData)
+    override fun onBindViewHolder(holder: MoviePagingAdapter.GridViewHolder, position: Int) {
+        getItem(position)?.let {
+            holder.bind(it)
+        }
     }
-
-    override fun getItemCount(): Int = movieList.size
 
     inner class GridViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val binding = ItemViewBinding.bind(itemView)
         fun bind(movie: Movie){
+
             with(itemView) {
                 val imageLink = buildString {
                     append(BuildConfig.BASE_IMAGE_URL)
@@ -45,14 +57,6 @@ class RecyclerAdapter(private val onClick: (Movie) -> Unit, private val movieLis
                         .into(imgPoster)
                 }
             }
-
-            itemView.setOnClickListener {
-                onClick(movie)
-            }
         }
-    }
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: Movie)
     }
 }
