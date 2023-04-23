@@ -1,6 +1,6 @@
 package com.juanarton.core.data.utils
 
-import com.juanarton.core.data.api.PopularMovieResponse
+import com.juanarton.core.data.api.movie.PopularMovieResponse
 import com.juanarton.core.data.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf

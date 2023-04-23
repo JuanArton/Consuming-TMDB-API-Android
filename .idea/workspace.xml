@@ -10,26 +10,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c75dc22-e4b4-4bdb-b8d5-cc0868b8f910" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_local_movies_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/tvShow/PopularTvShowResponse.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/tvShow/TMDBTvShowResponse.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/home/PopularMovieFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/home/PopularMovieFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/home/PopularMovieViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/home/PopularMovieViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/di/AppModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/di/AppModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/home/PopularMovieFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/movie/PopularMovieFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/home/PopularMovieViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/movie/PopularMovieViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_popular_movie.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_popular_movie.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/core/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/adapter/RecyclerAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/PopularMovieResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/PopularMovieResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/TMDBAPIResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/TMDBAPIResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/model/Movie.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/model/Movie.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/repository/TMDBRepositoryInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/repository/TMDBRepositoryInterface.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryInteractor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryUseCase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/repository/TMDBRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/repository/TMDBRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/source/remote/NetworkBoundRes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/source/remote/NetworkBoundRes.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/APIService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/APIService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/PopularMovieResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/movie/PopularMovieResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/TMDBAPIResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/movie/TMDBMovieResponse.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/source/remote/RemoteDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/source/remote/RemoteDataSource.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/utils/DataMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/utils/DataMapper.kt" afterDir="false" />
     </list>
@@ -90,16 +96,17 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;android-custom-view/FTPShare/Data/Data/Learn Android Again/MovieCatalog/core/src/main/java/com/juanarton/core/customview/SmartNestedScrollView.kt_SELECTED&quot;: &quot;SmartNestedScrollView&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/FTPShare/Data/Data/Android Project/FreeTube&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "android-custom-view/FTPShare/Data/Data/Learn Android Again/MovieCatalog/core/src/main/java/com/juanarton/core/customview/SmartNestedScrollView.kt_SELECTED": "SmartNestedScrollView",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/FTPShare/Data/Data/Bangkit/AAD Simulation/To-DoListApp",
+    "settings.editor.selected.configurable": "emulator"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/assets" />
@@ -109,6 +116,7 @@
       <recent name="$PROJECT_DIR$/core/src/main/java/com/juanarton/core" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.juanarton.core.data.api.movie" />
       <recent name="com.juanarton.moviecatalog.ui.fragments.home" />
       <recent name="com.juanarton.core.data.domain.repository" />
     </key>
@@ -127,7 +135,6 @@
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
-      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
@@ -143,6 +150,8 @@
         <option name="WORKING_DIR" value="" />
         <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
         <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
       </Auto>
       <Hybrid>
         <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
@@ -150,14 +159,21 @@
         <option name="WORKING_DIR" value="" />
         <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
         <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
       </Hybrid>
-      <Java />
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
       <Native>
         <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
         <option name="SHOW_STATIC_VARS" value="true" />
         <option name="WORKING_DIR" value="" />
         <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
         <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
       </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />

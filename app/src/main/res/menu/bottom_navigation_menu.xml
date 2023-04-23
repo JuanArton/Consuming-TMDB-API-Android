@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/navigation_movie"
+        android:icon="@drawable/baseline_local_movies_24"
+        android:title="@string/movie"/>
+
+    <item
+        android:id="@+id/navigation_tvShow"
+        android:icon="@drawable/baseline_live_tv_24"
+        android:title="@string/tv_show"/>
+
+    <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/search"/>
-
-    <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="@string/feed"/>
-
 
     <item
         android:id="@+id/navigation_favorite"

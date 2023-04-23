@@ -9,4 +9,6 @@
     <string name="title_favorite">favorite</string>
     <string name="no_data">No Data</string>
     <string name="loading">Loading</string>
+    <string name="movie">Movie</string>
+    <string name="tv_show">TV Show</string>
 </resources>

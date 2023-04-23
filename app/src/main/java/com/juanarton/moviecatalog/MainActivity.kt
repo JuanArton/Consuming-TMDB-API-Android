@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.juanarton.moviecatalog.ui.fragments.SearchScreenFragment
 import com.juanarton.moviecatalog.databinding.ActivityMainBinding
-import com.juanarton.moviecatalog.ui.fragments.home.PopularMovieFragment
+import com.juanarton.moviecatalog.ui.fragments.movie.PopularMovieFragment
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class MainActivity : AppCompatActivity() {
