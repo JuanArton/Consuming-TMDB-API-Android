@@ -25,5 +25,8 @@ data class PopularMovieResponse(
     val vote_average: String? = null,
 
     @field:SerializedName("vote_count")
-    val vote_count: String? = null
+    val vote_count: String? = null,
+
+    @field:SerializedName("poster_path")
+    val poster: String? = null
 )

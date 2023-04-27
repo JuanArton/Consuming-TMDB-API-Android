@@ -8,5 +8,5 @@ data class TMDBTvShowResponse (
     val page: Int,
 
     @field:SerializedName("results")
-    val responseList: List<PopularMovieResponse>
+    val responseList: List<PopularTvShowResponse>
 )

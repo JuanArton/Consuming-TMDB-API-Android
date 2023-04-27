@@ -18,12 +18,15 @@ class PopularTvShowResponse (
     @field:SerializedName("first_air_date")
     val first_air_date: String? = null,
 
-    @field:SerializedName("title")
+    @field:SerializedName("name")
     val name: String? = null,
 
     @field:SerializedName("vote_average")
     val vote_average: String? = null,
 
     @field:SerializedName("vote_count")
-    val vote_count: String? = null
+    val vote_count: String? = null,
+
+    @field:SerializedName("poster_path")
+    val poster: String? = null
 )

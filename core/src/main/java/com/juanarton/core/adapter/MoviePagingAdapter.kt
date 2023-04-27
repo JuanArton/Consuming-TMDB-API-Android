@@ -13,7 +13,9 @@ import com.juanarton.core.R
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.databinding.ItemViewBinding
 
-class MoviePagingAdapter: PagingDataAdapter<Movie, MoviePagingAdapter.GridViewHolder>(MovieComparator) {
+class MoviePagingAdapter(
+    private val onClick: (Movie) -> Unit
+): PagingDataAdapter<Movie, MoviePagingAdapter.GridViewHolder>(MovieComparator) {
 
     object MovieComparator: DiffUtil.ItemCallback<Movie>() {
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
@@ -45,8 +47,8 @@ class MoviePagingAdapter: PagingDataAdapter<Movie, MoviePagingAdapter.GridViewHo
 
             with(itemView) {
                 val imageLink = buildString {
-                    append(BuildConfig.BASE_IMAGE_URL)
-                    append(movie.backdrop_path)
+                    append(BuildConfig.BASE_POSTER_URL)
+                    append(movie.poster)
                 }
                 binding.apply {
                     binding.tvMovieTitle.text = movie.title
@@ -56,6 +58,10 @@ class MoviePagingAdapter: PagingDataAdapter<Movie, MoviePagingAdapter.GridViewHo
                         .centerCrop()
                         .into(imgPoster)
                 }
+            }
+
+            itemView.setOnClickListener {
+                onClick(movie)
             }
         }
     }

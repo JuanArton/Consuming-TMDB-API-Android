@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.juanarton.moviecatalog.ui.fragments.SearchScreenFragment
 import com.juanarton.moviecatalog.databinding.ActivityMainBinding
 import com.juanarton.moviecatalog.ui.fragments.movie.PopularMovieFragment
+import com.juanarton.moviecatalog.ui.fragments.tvShow.PopularTvShowFragment
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class MainActivity : AppCompatActivity() {
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 when(newIndex){
                     0 -> fragmentBuilder(PopularMovieFragment())
-                    1 -> fragmentBuilder(SearchScreenFragment())
+                    1 -> fragmentBuilder(PopularTvShowFragment())
                     2 -> moveToFavoriteFragment()
                 }
             }

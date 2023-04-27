@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start">
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:touchAnchorId="@id/tvShowRecyclerContainer"
+            app:touchAnchorSide="top"
+            />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/widget" />
+        <Constraint
+            android:id="@+id/tvShowRecyclerContainer"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgcarousel" />
+        <Constraint
+            android:id="@+id/loadanimate"
+            android:layout_height="200dp"
+            android:layout_width="200dp"
+            app:layout_constraintTop_toBottomOf="@+id/imgcarousel"
+            app:layout_constraintEnd_toEndOf="@+id/tvShowRecyclerContainer"
+            app:layout_constraintStart_toStartOf="@+id/tvShowRecyclerContainer"
+            app:layout_constraintBottom_toBottomOf="@+id/tvShowRecyclerContainer">
+            <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/nodataText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/tvShowRecyclerContainer"
+            app:layout_constraintStart_toStartOf="@+id/tvShowRecyclerContainer"
+            app:layout_constraintBottom_toBottomOf="@+id/tvShowRecyclerContainer"
+            app:layout_constraintTop_toBottomOf="@id/loadanimate">
+            <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/imgcarousel"
+            android:layout_width="match_parent"
+            android:layout_height="236dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@id/widget" />
+        <Constraint
+            android:id="@+id/tvShowRecyclerContainer"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgcarousel" />
+        <Constraint
+            android:id="@+id/loadanimate"
+            android:layout_height="200dp"
+            android:layout_width="200dp"
+            app:layout_constraintTop_toBottomOf="@+id/imgcarousel"
+            app:layout_constraintEnd_toEndOf="@+id/tvShowRecyclerContainer"
+            app:layout_constraintStart_toStartOf="@+id/tvShowRecyclerContainer"
+            app:layout_constraintBottom_toBottomOf="@+id/tvShowRecyclerContainer">
+            <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/nodataText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/tvShowRecyclerContainer"
+            app:layout_constraintStart_toStartOf="@+id/tvShowRecyclerContainer"
+            app:layout_constraintBottom_toBottomOf="@+id/tvShowRecyclerContainer"
+            app:layout_constraintTop_toBottomOf="@id/loadanimate">
+            <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/imgcarousel"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+</MotionScene>

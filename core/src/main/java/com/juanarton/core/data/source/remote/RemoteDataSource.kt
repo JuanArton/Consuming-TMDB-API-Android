@@ -25,16 +25,20 @@ class RemoteDataSource{
             override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
                 return try {
                     val position = params.key ?: 1
-                    val response = mutableListOf<PopularMovieResponse>()
+                    val movie = mutableListOf<Movie>()
                     when(mode){
-                        0 -> response.let { list1 ->
-                            API.services.getPopularMovie(BuildConfig.API_KEY, "en", position).responseList.let (list1::addAll)
+                        0 -> movie.let { popularList ->
+                            DataMapper.mapMovieResponseToMovieDomain(
+                                API.services.getPopularMovie(BuildConfig.API_KEY, "en", position).responseList
+                            ).let (popularList::addAll)
                         }
-                        1 -> response.let { list1 ->
-                            API.services.getPopularTvShow(BuildConfig.API_KEY, "en", position).responseList.let (list1::addAll)
+                        1 -> movie.let { popularList ->
+                            DataMapper.mapTvShowResponseToMovieDomain(
+                                API.services.getPopularTvShow(BuildConfig.API_KEY, "en", position).responseList
+                            ).let (popularList::addAll)
                         }
                     }
-                    val movie = DataMapper.mapMovieResponseToMovieDomain1(response)
+                    Log.d("MovieData", movie.toString())
                     LoadResult.Page(
                         data = movie,
                         prevKey = if (position == 1) null else position - 1,

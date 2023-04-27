@@ -1,5 +1,6 @@
 package com.juanarton.moviecatalog.ui.fragments.movie
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.juanarton.core.BuildConfig
 import com.juanarton.core.adapter.MoviePagingAdapter
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.moviecatalog.databinding.FragmentPopularMovieBinding
+import com.juanarton.moviecatalog.ui.fragments.activity.DetailActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -20,6 +22,7 @@ import kotlinx.coroutines.launch
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.Serializable
 
 class PopularMovieFragment : Fragment() {
 
@@ -29,7 +32,7 @@ class PopularMovieFragment : Fragment() {
     private var _imgCarousel: ImageCarousel? = null
     private val imgCarousel get() = _imgCarousel
 
-    private val homeScreenViewModel: HomeScreenViewModel by viewModel()
+    private val popularMovieViewModel: PopularMovieViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +45,7 @@ class PopularMovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeScreenViewModel.getPopularMovie().observe(viewLifecycleOwner){
+        popularMovieViewModel.getPopularMovie().observe(viewLifecycleOwner){
             showRecyclerList(it)
         }
 
@@ -84,11 +87,13 @@ class PopularMovieFragment : Fragment() {
 
     private fun showRecyclerList(movieList: PagingData<Movie>){
         val listener: (Movie) -> Unit = {
-
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("movieData", it)
+            startActivity(intent)
         }
 
         binding?.movieRecyclerContainer?.layoutManager = GridLayoutManager(activity, 3)
-        val rvAdapter = MoviePagingAdapter()
+        val rvAdapter = MoviePagingAdapter(listener)
         binding?.movieRecyclerContainer?.adapter = rvAdapter
         rvAdapter.submitData(lifecycle, movieList)
 
