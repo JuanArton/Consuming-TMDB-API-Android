@@ -5,9 +5,15 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.juanarton.core.BuildConfig
 import com.juanarton.core.data.api.API
-import com.juanarton.core.data.api.movie.PopularMovieResponse
+import com.juanarton.core.data.api.APIResponse
+import com.juanarton.core.data.api.video.MovieVideoResponse
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.utils.DataMapper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import java.lang.Exception
 
 class RemoteDataSource{
 
@@ -58,4 +64,19 @@ class RemoteDataSource{
             }
         }
     }
+
+    suspend fun getMovieTrailer(id: Int): Flow<APIResponse<List<MovieVideoResponse>>> =
+        flow{
+            try{
+                val trailer = API.services.getMovieVideo(id, BuildConfig.API_KEY, "en")
+                val trailerList = trailer.responseList
+                if (trailerList.isEmpty()){
+                    emit(APIResponse.Error(null))
+                } else{
+                    emit(APIResponse.Success(trailerList))
+                }
+            } catch (e: Exception){
+                emit(APIResponse.Error(e.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
 }

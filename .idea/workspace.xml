@@ -16,20 +16,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/di/AppModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/di/AppModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/activity/DetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/activity/DetailMovieActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/movie/PopularMovieFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/movie/PopularMovieFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/movie/PopularMovieViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/movie/PopularMovieViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail_movie.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/core/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/adapter/MoviePagingAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/adapter/MoviePagingAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/movie/PopularMovieResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/movie/PopularMovieResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/tvShow/PopularTvShowResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/tvShow/PopularTvShowResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/tvShow/TMDBTvShowResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/tvShow/TMDBTvShowResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/model/Movie.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/model/Movie.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/APIService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/APIService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/repository/TMDBRepositoryInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/repository/TMDBRepositoryInterface.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryInteractor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryUseCase.kt" afterDir="false" />
@@ -94,17 +89,17 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "android-custom-view/FTPShare/Data/Data/Learn Android Again/MovieCatalog/core/src/main/java/com/juanarton/core/customview/SmartNestedScrollView.kt_SELECTED": "SmartNestedScrollView",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "/FTPShare/Data/Data/Bangkit/AAD Simulation/PomodoroApp",
-    "settings.editor.selected.configurable": "emulator"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;android-custom-view/FTPShare/Data/Data/Learn Android Again/MovieCatalog/core/src/main/java/com/juanarton/core/customview/SmartNestedScrollView.kt_SELECTED&quot;: &quot;SmartNestedScrollView&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/FTPShare/Data/Data/Bangkit/AAD Simulation/PomodoroApp&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;emulator&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/xml" />

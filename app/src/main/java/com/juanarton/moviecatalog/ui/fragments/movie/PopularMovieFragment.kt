@@ -14,7 +14,7 @@ import com.juanarton.core.BuildConfig
 import com.juanarton.core.adapter.MoviePagingAdapter
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.moviecatalog.databinding.FragmentPopularMovieBinding
-import com.juanarton.moviecatalog.ui.fragments.activity.DetailActivity
+import com.juanarton.moviecatalog.ui.fragments.activity.DetailMovieActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -22,7 +22,6 @@ import kotlinx.coroutines.launch
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.Serializable
 
 class PopularMovieFragment : Fragment() {
 
@@ -87,7 +86,7 @@ class PopularMovieFragment : Fragment() {
 
     private fun showRecyclerList(movieList: PagingData<Movie>){
         val listener: (Movie) -> Unit = {
-            val intent = Intent(context, DetailActivity::class.java)
+            val intent = Intent(context, DetailMovieActivity::class.java)
             intent.putExtra("movieData", it)
             startActivity(intent)
         }

@@ -17,7 +17,7 @@
         android:theme="@style/Theme.TMDBCatalog"
         tools:targetApi="31">
         <activity
-            android:name=".ui.fragments.activity.DetailActivity"
+            android:name=".ui.fragments.activity.DetailMovieActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
