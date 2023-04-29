@@ -2,7 +2,7 @@ package com.juanarton.moviecatalog.di
 
 import com.juanarton.core.data.domain.usecase.TMDBRepositoryInteractor
 import com.juanarton.core.data.domain.usecase.TMDBRepositoryUseCase
-import com.juanarton.moviecatalog.ui.fragments.activity.DetailMovieViewModel
+import com.juanarton.moviecatalog.ui.activity.detail.DetailMovieViewModel
 import com.juanarton.moviecatalog.ui.fragments.movie.PopularMovieViewModel
 import com.juanarton.moviecatalog.ui.fragments.tvShow.PopularTvShowViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel

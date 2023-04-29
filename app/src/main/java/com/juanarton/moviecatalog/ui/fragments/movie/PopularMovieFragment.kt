@@ -14,7 +14,7 @@ import com.juanarton.core.BuildConfig
 import com.juanarton.core.adapter.MoviePagingAdapter
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.moviecatalog.databinding.FragmentPopularMovieBinding
-import com.juanarton.moviecatalog.ui.fragments.activity.DetailMovieActivity
+import com.juanarton.moviecatalog.ui.activity.detail.DetailMovieActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.distinctUntilChangedBy

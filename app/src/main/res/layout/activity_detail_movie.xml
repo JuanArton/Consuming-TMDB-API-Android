@@ -5,33 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.fragments.activity.DetailMovieActivity">
+    tools:context=".ui.activity.detail.DetailMovieActivity">
 
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-        android:id="@+id/trailerPlayer"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/movieBackdrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/movieBackdrop"
+        app:layout_constraintTop_toTopOf="@+id/movieBackdrop">
+        <ImageButton
+            android:id="@+id/playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@null"
+            android:elevation="2dp"
+            android:src="@drawable/baseline_play_arrow_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/playButton"
+            android:text="@string/watch_trailer"
+            android:layout_marginTop="-15dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="25sp"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/movieBackdrop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:enableAutomaticInitialization="false"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/baseline_local_movies_24"
+        android:contentDescription="@string/poster"
+        android:tintMode="src_atop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#6F000000">
+    </ImageView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/imageContrainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/trailerPlayer"
-        android:layout_marginEnd="303dp"
+        android:layout_below="@id/movieBackdrop"
         android:backgroundTint="@color/black"
         android:orientation="vertical"
         app:cardElevation="2dp"
-        android:layout_marginTop="-50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="15dp"
         app:cardCornerRadius="5dp"
         app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toEndOf="@+id/trailerPlayer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trailerPlayer">
+        app:layout_constraintTop_toBottomOf="@+id/movieBackdrop">
         <ImageView
             android:id="@+id/moviePoster"
             android:layout_width="100dp"
