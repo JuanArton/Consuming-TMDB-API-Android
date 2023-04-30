@@ -11,7 +11,7 @@ data class Movie(
     val overview: String? = null,
     val release_date: String? = null,
     val title: String? = null,
-    val vote_average: String? = null,
+    val vote_average: Float? = null,
     val vote_count: String? = null,
     val poster: String? = null
 ): Parcelable

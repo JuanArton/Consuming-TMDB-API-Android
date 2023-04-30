@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.juanarton.core.BuildConfig
@@ -62,6 +63,25 @@ class DetailMovieActivity : AppCompatActivity() {
                 Glide.with(this@DetailMovieActivity)
                     .load(posterLink)
                     .into(moviePoster)
+
+                movieTitle.text = movieData.title
+
+                val rating = movieData.vote_average?.times(10)?.toInt()
+                when(rating){
+                    in 0..29 -> {
+                        ratingBar.setIndicatorColor(ContextCompat.getColor(this@DetailMovieActivity, R.color.badRate))
+                        ratingBar.trackColor = ContextCompat.getColor(this@DetailMovieActivity, R.color.badRateTrack)
+                    }
+                    in 30..69 -> {
+                        ratingBar.setIndicatorColor(ContextCompat.getColor(this@DetailMovieActivity, R.color.normalRate))
+                        ratingBar.trackColor = ContextCompat.getColor(this@DetailMovieActivity, R.color.normalRateTrack)
+                    }
+                    in 70..100 ->{
+                        ratingBar.setIndicatorColor(ContextCompat.getColor(this@DetailMovieActivity, R.color.goodRate))
+                        ratingBar.trackColor = ContextCompat.getColor(this@DetailMovieActivity, R.color.goodRateTrack)
+                    }
+                }
+                ratingPercentage.text = rating.toString()
             }
         }
     }

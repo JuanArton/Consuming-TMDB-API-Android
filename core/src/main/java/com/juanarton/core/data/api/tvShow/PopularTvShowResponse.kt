@@ -22,7 +22,7 @@ class PopularTvShowResponse (
     val name: String? = null,
 
     @field:SerializedName("vote_average")
-    val vote_average: String? = null,
+    val vote_average: Float? = null,
 
     @field:SerializedName("vote_count")
     val vote_count: String? = null,

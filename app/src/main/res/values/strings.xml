@@ -15,4 +15,6 @@
     <string name="watch_trailer">Watch Trailer</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="percentage_hint">70</string>
 </resources>
