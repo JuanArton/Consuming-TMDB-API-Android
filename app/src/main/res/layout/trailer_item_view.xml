@@ -27,8 +27,8 @@
             android:layout_toEndOf="@+id/videoIcon"
             android:gravity="center"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:textColor="@android:color/white"
             android:textSize="15sp" />
     </RelativeLayout>

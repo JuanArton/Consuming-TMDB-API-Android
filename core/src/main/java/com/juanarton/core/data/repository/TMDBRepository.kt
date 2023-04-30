@@ -1,11 +1,8 @@
 package com.juanarton.core.data.repository
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.juanarton.core.data.api.APIResponse
 import com.juanarton.core.data.api.video.MovieVideoResponse
 import com.juanarton.core.data.domain.model.Movie

@@ -34,7 +34,7 @@ class DetailMovieActivity : AppCompatActivity() {
         val movieData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra("movieData", Movie::class.java)
         } else {
-            intent.getParcelableExtra<Movie>("movieData")
+            intent.getParcelableExtra("movieData")
         }
 
         movieData?.let {
@@ -88,7 +88,6 @@ class DetailMovieActivity : AppCompatActivity() {
                             dialog.show()
 
                             val width = 350 * this.resources.displayMetrics.density
-                            val factor = this.resources.displayMetrics.density
                             val layoutParams = WindowManager.LayoutParams()
                             layoutParams.copyFrom(dialog.window?.attributes)
                             layoutParams.width = width.toInt()

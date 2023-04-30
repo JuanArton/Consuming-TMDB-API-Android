@@ -50,7 +50,7 @@ class RemoteDataSource{
                         prevKey = if (position == 1) null else position - 1,
                         nextKey = position + 1
                     )
-                } catch (e: java.lang.Exception) {
+                } catch (e: Exception) {
                     Log.d("Pagingtest", e.toString())
                     LoadResult.Error(e)
                 }

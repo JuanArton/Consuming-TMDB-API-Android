@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
@@ -47,6 +48,42 @@ class PopularMovieFragment : Fragment() {
         popularMovieViewModel.getPopularMovie().observe(viewLifecycleOwner){
             showRecyclerList(it)
         }
+
+        binding?.movieMotionLayout?.setTransitionListener(object : MotionLayout.TransitionListener{
+            override fun onTransitionStarted(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int
+            ) {
+            }
+
+            override fun onTransitionChange(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int,
+                progress: Float
+            ) {
+                imgCarousel?.stop()
+            }
+
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                if(binding?.movieMotionLayout?.progress?.toInt() == 1){
+                    imgCarousel?.stop()
+                }else{
+                    imgCarousel?.start()
+                }
+                Log.d("motionMonitor", binding?.movieMotionLayout?.progress?.toInt().toString())
+            }
+
+            override fun onTransitionTrigger(
+                motionLayout: MotionLayout?,
+                triggerId: Int,
+                positive: Boolean,
+                progress: Float
+            ) {
+            }
+
+        })
 
     }
 
