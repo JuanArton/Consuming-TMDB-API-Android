@@ -7,5 +7,5 @@ data class TMDBVideoResponse (
     val page: Int,
 
     @field:SerializedName("results")
-    val responseList: List<MovieVideoResponse>
+    val responseList: List<VideoTrailerResponse>
 )

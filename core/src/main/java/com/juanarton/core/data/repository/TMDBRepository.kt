@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.juanarton.core.data.api.APIResponse
-import com.juanarton.core.data.api.video.MovieVideoResponse
+import com.juanarton.core.data.api.video.VideoTrailerResponse
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.domain.repository.TMDBRepositoryInterface
@@ -43,17 +43,17 @@ class TMDBRepository(private val remoteDataSource: RemoteDataSource): TMDBReposi
         ).flow
     }
 
-    override fun getMovieTrailer(id: String): Flow<Resource<List<Trailer>>> {
-        return object : NetworkBoundRes<List<Trailer>, List<MovieVideoResponse>>() {
-            override fun loadFromNetwork(data: List<MovieVideoResponse>): Flow<List<Trailer>> {
+    override fun getMovieTrailer(id: String, mode: String): Flow<Resource<List<Trailer>>> {
+        return object : NetworkBoundRes<List<Trailer>, List<VideoTrailerResponse>>() {
+            override fun loadFromNetwork(data: List<VideoTrailerResponse>): Flow<List<Trailer>> {
                 val filteredData = data.filter {
                     it.site == "YouTube" && it.official == "true" && it.type == "Trailer"
                 }
                 return DataMapper.mapTrailerResponseToTrailerDomain(filteredData)
             }
 
-            override suspend fun createCall(): Flow<APIResponse<List<MovieVideoResponse>>> {
-                return remoteDataSource.getMovieTrailer(id.toInt())
+            override suspend fun createCall(): Flow<APIResponse<List<VideoTrailerResponse>>> {
+                return remoteDataSource.getMovieTrailer(id.toInt(), mode)
             }
         }.asFlow()
     }

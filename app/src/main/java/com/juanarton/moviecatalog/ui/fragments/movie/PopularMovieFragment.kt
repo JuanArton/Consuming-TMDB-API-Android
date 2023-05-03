@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.juanarton.core.BuildConfig
 import com.juanarton.core.adapter.MoviePagingAdapter
 import com.juanarton.core.data.domain.model.Movie
+import com.juanarton.core.data.utils.Mode
 import com.juanarton.moviecatalog.databinding.FragmentPopularMovieBinding
 import com.juanarton.moviecatalog.ui.activity.detail.DetailMovieActivity
 import kotlinx.coroutines.CoroutineScope
@@ -50,18 +51,12 @@ class PopularMovieFragment : Fragment() {
         }
 
         binding?.movieMotionLayout?.setTransitionListener(object : MotionLayout.TransitionListener{
-            override fun onTransitionStarted(
-                motionLayout: MotionLayout?,
-                startId: Int,
-                endId: Int
+            override fun onTransitionStarted(motionLayout: MotionLayout?,  startId: Int,  endId: Int
             ) {
             }
 
-            override fun onTransitionChange(
-                motionLayout: MotionLayout?,
-                startId: Int,
-                endId: Int,
-                progress: Float
+            override fun onTransitionChange( motionLayout: MotionLayout?, startId: Int,
+                endId: Int, progress: Float
             ) {
                 imgCarousel?.stop()
             }
@@ -75,16 +70,11 @@ class PopularMovieFragment : Fragment() {
                 Log.d("motionMonitor", binding?.movieMotionLayout?.progress?.toInt().toString())
             }
 
-            override fun onTransitionTrigger(
-                motionLayout: MotionLayout?,
-                triggerId: Int,
-                positive: Boolean,
-                progress: Float
+            override fun onTransitionTrigger( motionLayout: MotionLayout?, triggerId: Int,
+                positive: Boolean, progress: Float
             ) {
             }
-
         })
-
     }
 
     private fun setUI(data: List<Movie?>){
@@ -125,6 +115,7 @@ class PopularMovieFragment : Fragment() {
         val listener: (Movie) -> Unit = {
             val intent = Intent(context, DetailMovieActivity::class.java)
             intent.putExtra("movieData", it)
+            intent.putExtra("mode", Mode.MOVIE.mode)
             startActivity(intent)
         }
 

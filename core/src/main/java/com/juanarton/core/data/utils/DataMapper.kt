@@ -2,7 +2,7 @@ package com.juanarton.core.data.utils
 
 import com.juanarton.core.data.api.movie.PopularMovieResponse
 import com.juanarton.core.data.api.tvShow.PopularTvShowResponse
-import com.juanarton.core.data.api.video.MovieVideoResponse
+import com.juanarton.core.data.api.video.VideoTrailerResponse
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
 import kotlinx.coroutines.flow.Flow
@@ -48,7 +48,7 @@ object DataMapper {
         return movieList
     }
 
-    fun mapTrailerResponseToTrailerDomain(response: List<MovieVideoResponse>): Flow<List<Trailer>> {
+    fun mapTrailerResponseToTrailerDomain(response: List<VideoTrailerResponse>): Flow<List<Trailer>> {
         val trailerList = ArrayList<Trailer>()
         response.map {
             val trailer = Trailer(

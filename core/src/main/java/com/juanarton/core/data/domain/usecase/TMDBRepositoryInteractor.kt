@@ -10,5 +10,5 @@ import kotlinx.coroutines.flow.Flow
 class TMDBRepositoryInteractor(private val tmdbRepository: TMDBRepositoryInterface): TMDBRepositoryUseCase {
     override fun getPopularMovie(): Flow<PagingData<Movie>> = tmdbRepository.getPopularMovie()
     override fun getPopularTvShow(): Flow<PagingData<Movie>> = tmdbRepository.getPopularTvShow()
-    override fun getMovieTrailer(id: String): Flow<Resource<List<Trailer>>> = tmdbRepository.getMovieTrailer(id)
+    override fun getMovieTrailer(id: String, mode: String): Flow<Resource<List<Trailer>>> = tmdbRepository.getMovieTrailer(id, mode)
 }

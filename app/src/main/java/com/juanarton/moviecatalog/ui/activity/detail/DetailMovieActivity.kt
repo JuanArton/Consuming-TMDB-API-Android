@@ -3,6 +3,7 @@ package com.juanarton.moviecatalog.ui.activity.detail
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.ListView
@@ -38,8 +39,10 @@ class DetailMovieActivity : AppCompatActivity() {
             intent.getParcelableExtra("movieData")
         }
 
-        movieData?.let {
-            detailMovieViewModel.setID(it.id)
+        val mode = intent.getStringExtra("mode")
+
+        if (movieData != null && mode != null){
+            detailMovieViewModel.setProperty(movieData.id, mode)
 
             binding?.playButton?.setOnClickListener {
                 buildDialogBox()
@@ -56,15 +59,29 @@ class DetailMovieActivity : AppCompatActivity() {
             }
 
             binding?.apply {
-                Glide.with(this@DetailMovieActivity)
-                    .load(backdropLink)
-                    .into(movieBackdrop)
+                if (movieData.backdrop_path.isNullOrEmpty()){
+                    playButton.visibility = View.INVISIBLE
+
+                    val height = 236 * this@DetailMovieActivity.resources.displayMetrics.density
+                    movieBackdrop.layoutParams.height = height.toInt()
+
+                    Glide.with(this@DetailMovieActivity)
+                        .load(R.drawable.baseline_broken_image_24)
+                        .into(movieBackdrop)
+                } else {
+                    Glide.with(this@DetailMovieActivity)
+                        .load(backdropLink)
+                        .into(movieBackdrop)
+                }
 
                 Glide.with(this@DetailMovieActivity)
                     .load(posterLink)
                     .into(moviePoster)
 
                 movieTitle.text = movieData.title
+
+                overviewContent.text = movieData.overview
+
 
                 val rating = movieData.vote_average?.times(10)?.toInt()
                 when(rating){

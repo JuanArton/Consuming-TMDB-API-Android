@@ -9,5 +9,5 @@ import kotlinx.coroutines.flow.Flow
 interface TMDBRepositoryInterface {
     fun getPopularMovie(): Flow<PagingData<Movie>>
     fun getPopularTvShow(): Flow<PagingData<Movie>>
-    fun getMovieTrailer(id: String): Flow<Resource<List<Trailer>>>
+    fun getMovieTrailer(id: String, mode: String): Flow<Resource<List<Trailer>>>
 }

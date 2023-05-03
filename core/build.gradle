@@ -19,7 +19,7 @@ android {
 
         buildConfigField "String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\""
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/\""
-        buildConfigField "String", "API_KEY", "\"***\""
+        buildConfigField "String", "API_KEY", "\"ba2ed4750f7fa7003a7827ddc9aded91\""
         buildConfigField "String", "BASE_POSTER_URL", "\"https://www.themoviedb.org/t/p/w300_and_h450_bestv2\""
     }
 

@@ -5,7 +5,7 @@
     <color name="black">#15151d</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#ff9e02</color>
-    <color name="grey">#5d5d5d</color>
+    <color name="grey">#1a1a26</color>
     <color name="red">#E50914</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
@@ -18,4 +18,5 @@
     <color name="normalRateTrack">#40d2d531</color>
     <color name="goodRate">#21d07a</color>
     <color name="goodRateTrack">#4021d07a</color>
+    <color name="bottomBarGrey">#5d5d5d</color>
 </resources>

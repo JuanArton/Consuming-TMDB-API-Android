@@ -1,10 +1,12 @@
 package com.juanarton.moviecatalog.ui.fragments.tvShow
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
@@ -12,7 +14,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.juanarton.core.BuildConfig
 import com.juanarton.core.adapter.MoviePagingAdapter
 import com.juanarton.core.data.domain.model.Movie
+import com.juanarton.core.data.utils.Mode
 import com.juanarton.moviecatalog.databinding.FragmentPopularTvShowBinding
+import com.juanarton.moviecatalog.ui.activity.detail.DetailMovieActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -45,6 +49,32 @@ class PopularTvShowFragment : Fragment() {
         popularTvShowViewModel.getPopularTvShow().observe(viewLifecycleOwner){
             showRecyclerList(it)
         }
+
+        binding?.tvMotionLayout?.setTransitionListener(object : MotionLayout.TransitionListener{
+            override fun onTransitionStarted( motionLayout: MotionLayout?, startId: Int, endId: Int
+            ) {
+            }
+
+            override fun onTransitionChange( motionLayout: MotionLayout?,  startId: Int,
+                endId: Int, progress: Float
+            ) {
+                imgCarousel?.stop()
+            }
+
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                if(binding?.tvMotionLayout?.progress?.toInt() == 1){
+                    imgCarousel?.stop()
+                }else{
+                    imgCarousel?.start()
+                }
+                Log.d("motionMonitor", binding?.tvMotionLayout?.progress?.toInt().toString())
+            }
+
+            override fun onTransitionTrigger( motionLayout: MotionLayout?, triggerId: Int,
+                positive: Boolean, progress: Float
+            ) {
+            }
+        })
     }
 
     private fun setUI(data: List<Movie?>){
@@ -83,7 +113,10 @@ class PopularTvShowFragment : Fragment() {
 
     private fun showRecyclerList(movieList: PagingData<Movie>){
         val listener: (Movie) -> Unit = {
-
+            val intent = Intent(context, DetailMovieActivity::class.java)
+            intent.putExtra("movieData", it)
+            intent.putExtra("mode", Mode.TVSHOW.mode)
+            startActivity(intent)
         }
 
         binding?.tvShowRecyclerContainer?.layoutManager = GridLayoutManager(activity, 3)

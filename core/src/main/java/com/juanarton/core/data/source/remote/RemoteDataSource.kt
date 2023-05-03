@@ -6,9 +6,10 @@ import androidx.paging.PagingState
 import com.juanarton.core.BuildConfig
 import com.juanarton.core.data.api.API
 import com.juanarton.core.data.api.APIResponse
-import com.juanarton.core.data.api.video.MovieVideoResponse
+import com.juanarton.core.data.api.video.VideoTrailerResponse
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.utils.DataMapper
+import com.juanarton.core.data.utils.Mode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -65,11 +66,10 @@ class RemoteDataSource{
         }
     }
 
-    suspend fun getMovieTrailer(id: Int): Flow<APIResponse<List<MovieVideoResponse>>> =
+    suspend fun getMovieTrailer(id: Int, mode: String): Flow<APIResponse<List<VideoTrailerResponse>>> =
         flow{
             try{
-                val trailer = API.services.getMovieVideo(id, BuildConfig.API_KEY, "en")
-                val trailerList = trailer.responseList
+                val trailerList = getTrailer(id, mode)
                 if (trailerList.isEmpty()){
                     emit(APIResponse.Error(null))
                 } else{
@@ -79,4 +79,14 @@ class RemoteDataSource{
                 emit(APIResponse.Error(e.toString()))
             }
         }.flowOn(Dispatchers.IO)
+
+    suspend fun getTrailer(id: Int, mode: String): List<VideoTrailerResponse>{
+        val trailer = when(mode){
+            Mode.TVSHOW.mode -> API.services.getMovieVideo(Mode.TVSHOW.mode, id, BuildConfig.API_KEY, "en")
+            else -> {
+                API.services.getMovieVideo(Mode.MOVIE.mode, id, BuildConfig.API_KEY, "en")
+            }
+        }
+        return trailer.responseList
+    }
 }

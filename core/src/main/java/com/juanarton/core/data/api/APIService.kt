@@ -22,8 +22,9 @@ interface APIService {
         @Query("page") page: Int
     ): TMDBTvShowResponse
 
-    @GET("3/movie/" + "{movie_id}" + "/videos")
+    @GET("3/" + "{mode}/" + "{movie_id}" + "/videos")
     suspend fun getMovieVideo(
+        @Path("mode")mode: String,
         @Path("movie_id") id: Int,
         @Query("api_key") key: String,
         @Query("language") username: String

@@ -11,12 +11,14 @@ import com.juanarton.core.data.source.remote.Resource
 
 class DetailMovieViewModel(private val tmdbRepositoryUseCase: TMDBRepositoryUseCase): ViewModel() {
     private var id: MutableLiveData<String> = MutableLiveData()
+    private var mode = ""
 
-    fun setID(id: String){
+    fun setProperty(id: String, mode: String){
         this.id.value = id
+        this.mode = mode
     }
 
     fun movieTrailer(): LiveData<Resource<List<Trailer>>> = id.switchMap {
-        tmdbRepositoryUseCase.getMovieTrailer(it).asLiveData()
+        tmdbRepositoryUseCase.getMovieTrailer(it, mode).asLiveData()
     }
 }
