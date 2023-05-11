@@ -16,7 +16,8 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="movie_title">Movie Title</string>
-    <string name="percentage_hint">70</string>
+    <string name="percentage_hint">0</string>
     <string name="user_nscore">User \nScore</string>
     <string name="overview">Overview</string>
+    <string name="noTrailer">No Trailer Available</string>
 </resources>

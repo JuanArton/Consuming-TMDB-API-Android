@@ -1,11 +1,13 @@
 package com.juanarton.core.data.repository
 
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.juanarton.core.data.api.APIResponse
 import com.juanarton.core.data.api.video.VideoTrailerResponse
 import com.juanarton.core.data.domain.model.Movie
+import com.juanarton.core.data.domain.model.Search
 import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.domain.repository.TMDBRepositoryInterface
 import com.juanarton.core.data.source.remote.NetworkBoundRes
@@ -56,5 +58,19 @@ class TMDBRepository(private val remoteDataSource: RemoteDataSource): TMDBReposi
                 return remoteDataSource.getMovieTrailer(id.toInt(), mode)
             }
         }.asFlow()
+    }
+
+    override fun multiSearch(searchString: String): Flow<PagingData<Search>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 2,
+                enablePlaceholders = false,
+                initialLoadSize = 1
+            ),
+            pagingSourceFactory = {
+                remoteDataSource.multiSearch(searchString)
+            },
+            initialKey = 1
+        ).flow
     }
 }

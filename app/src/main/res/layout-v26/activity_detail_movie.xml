@@ -24,6 +24,7 @@
             android:elevation="2dp"
             android:src="@drawable/baseline_play_arrow_24" />
         <TextView
+            android:id="@+id/watchTrailerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/playButton"
@@ -84,6 +85,7 @@
         android:textColorHint="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:maxLines="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageContrainer"
         app:layout_constraintTop_toTopOf="@+id/imageContrainer" />
@@ -146,14 +148,14 @@
         android:id="@+id/overviewHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
         android:text="@string/overview"
         android:textColor="@color/white"
         android:textSize="23sp"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="10dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageContrainer" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
     <TextView
         android:id="@+id/overviewContent"

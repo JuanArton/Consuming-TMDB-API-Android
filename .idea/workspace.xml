@@ -10,7 +10,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c75dc22-e4b4-4bdb-b8d5-cc0868b8f910" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail_movie.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail_movie.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/di/AppModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/di/AppModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/activity/detail/DetailMovieActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/activity/detail/DetailMovieActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/SearchScreenFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/search/SearchScreenFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_broken_image_24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_broken_image_24.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-v26/activity_detail_movie.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-v26/activity_detail_movie.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search_screen.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/core/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/APIService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/APIService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/repository/TMDBRepositoryInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/repository/TMDBRepositoryInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryInteractor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/repository/TMDBRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/repository/TMDBRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/source/remote/RemoteDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/source/remote/RemoteDataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/utils/DataMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/utils/DataMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/favorite/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared_dependencies.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/shared_dependencies.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +81,11 @@
         <option value="Kotlin Object" />
         <option value="Kotlin Interface" />
         <option value="valueResourceFile" />
-        <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
         <option value="Kotlin Enum" />
+        <option value="Kotlin Data Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -71,17 +105,20 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;android-custom-view/FTPShare/Data/Data/Learn Android Again/MovieCatalog/core/src/main/java/com/juanarton/core/customview/SmartNestedScrollView.kt_SELECTED&quot;: &quot;SmartNestedScrollView&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/FTPShare/Data/Data/Learn Android Again/MovieCatalog/app/src/main/res/drawable&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;emulator&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "android-custom-view/FTPShare/Data/Data/Learn Android Again/MovieCatalog/core/src/main/java/com/juanarton/core/customview/SmartNestedScrollView.kt_SELECTED": "SmartNestedScrollView",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/FTPShare/Data/Data/Learn Android Again/MovieCatalog/app/src/main/res/drawable",
+    "project.structure.last.edited": "SDK Location",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -95,11 +132,11 @@
       <recent name="com.juanarton.moviecatalog.ui.activity.popUp" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.juanarton.moviecatalog.ui.fragments.search" />
       <recent name="com.juanarton.moviecatalog.ui.activity.detail" />
       <recent name="com.juanarton.moviecatalog.ui.fragments.activity" />
       <recent name="com.juanarton.core.data.api.movie" />
       <recent name="com.juanarton.moviecatalog.ui.fragments.home" />
-      <recent name="com.juanarton.core.data.domain.repository" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="layout" />

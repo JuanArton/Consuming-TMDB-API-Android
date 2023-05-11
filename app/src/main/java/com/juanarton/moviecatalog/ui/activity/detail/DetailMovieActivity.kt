@@ -61,6 +61,7 @@ class DetailMovieActivity : AppCompatActivity() {
             binding?.apply {
                 if (movieData.backdrop_path.isNullOrEmpty()){
                     playButton.visibility = View.INVISIBLE
+                    watchTrailerText.text = resources.getString(R.string.noTrailer)
 
                     val height = 236 * this@DetailMovieActivity.resources.displayMetrics.density
                     movieBackdrop.layoutParams.height = height.toInt()
@@ -88,14 +89,17 @@ class DetailMovieActivity : AppCompatActivity() {
                     in 0..29 -> {
                         ratingBar.setIndicatorColor(ContextCompat.getColor(this@DetailMovieActivity, R.color.badRate))
                         ratingBar.trackColor = ContextCompat.getColor(this@DetailMovieActivity, R.color.badRateTrack)
+                        ratingBar.progress = rating ?: 0
                     }
                     in 30..69 -> {
                         ratingBar.setIndicatorColor(ContextCompat.getColor(this@DetailMovieActivity, R.color.normalRate))
                         ratingBar.trackColor = ContextCompat.getColor(this@DetailMovieActivity, R.color.normalRateTrack)
+                        ratingBar.progress = rating ?: 0
                     }
                     in 70..100 ->{
                         ratingBar.setIndicatorColor(ContextCompat.getColor(this@DetailMovieActivity, R.color.goodRate))
                         ratingBar.trackColor = ContextCompat.getColor(this@DetailMovieActivity, R.color.goodRateTrack)
+                        ratingBar.progress = rating ?: 0
                     }
                 }
                 ratingPercentage.text = rating.toString()

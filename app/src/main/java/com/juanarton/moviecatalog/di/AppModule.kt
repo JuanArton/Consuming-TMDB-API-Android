@@ -4,6 +4,7 @@ import com.juanarton.core.data.domain.usecase.TMDBRepositoryInteractor
 import com.juanarton.core.data.domain.usecase.TMDBRepositoryUseCase
 import com.juanarton.moviecatalog.ui.activity.detail.DetailMovieViewModel
 import com.juanarton.moviecatalog.ui.fragments.movie.PopularMovieViewModel
+import com.juanarton.moviecatalog.ui.fragments.search.SearchViewModel
 import com.juanarton.moviecatalog.ui.fragments.tvShow.PopularTvShowViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -16,4 +17,5 @@ val viewModelModule = module {
     viewModel { PopularMovieViewModel(get()) }
     viewModel { PopularTvShowViewModel(get()) }
     viewModel { DetailMovieViewModel(get()) }
+    viewModel { SearchViewModel(get()) }
 }
