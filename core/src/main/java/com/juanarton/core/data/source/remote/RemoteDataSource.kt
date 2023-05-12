@@ -8,7 +8,6 @@ import com.juanarton.core.data.api.API
 import com.juanarton.core.data.api.APIResponse
 import com.juanarton.core.data.api.video.VideoTrailerResponse
 import com.juanarton.core.data.domain.model.Movie
-import com.juanarton.core.data.domain.model.Search
 import com.juanarton.core.data.utils.DataMapper
 import com.juanarton.core.data.utils.Mode
 import kotlinx.coroutines.Dispatchers
@@ -50,16 +49,16 @@ class RemoteDataSource{
         return trailer.responseList
     }
 
-    fun multiSearch(searchString: String): PagingSource<Int, Search>{
-        return object : PagingSource<Int, Search>(){
-            override fun getRefreshKey(state: PagingState<Int, Search>): Int? {
+    fun multiSearch(searchString: String): PagingSource<Int, Movie>{
+        return object : PagingSource<Int, Movie>(){
+            override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
                 return state.anchorPosition?.let { anchorPosition ->
                     state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
                         ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
                 }
             }
 
-            override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Search> {
+            override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
                 return try {
                     Log.d("pagingtest", "load")
                     val position = params.key ?: 1

@@ -7,25 +7,22 @@ data class PopularMovieResponse(
     val id: String,
 
     @field:SerializedName("backdrop_path")
-    val backdrop_path: String? = null,
-
-    @field:SerializedName("genre_ids")
-    val genre_ids: List<String>? = null,
+    val backdropPath: String? = null,
 
     @field:SerializedName("overview")
     val overview: String? = null,
 
     @field:SerializedName("release_date")
-    val release_date: String? = null,
+    val releaseDate: String? = null,
 
     @field:SerializedName("title")
     val title: String? = null,
 
     @field:SerializedName("vote_average")
-    val vote_average: Float? = null,
+    val voteAverage: Float? = null,
 
     @field:SerializedName("vote_count")
-    val vote_count: String? = null,
+    val voteCount: String? = null,
 
     @field:SerializedName("poster_path")
     val poster: String? = null

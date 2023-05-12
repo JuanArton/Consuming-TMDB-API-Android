@@ -1,22 +1,26 @@
 package com.juanarton.core.data.repository
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.juanarton.core.data.api.APIResponse
 import com.juanarton.core.data.api.video.VideoTrailerResponse
 import com.juanarton.core.data.domain.model.Movie
-import com.juanarton.core.data.domain.model.Search
 import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.domain.repository.TMDBRepositoryInterface
+import com.juanarton.core.data.source.local.LocalDataSource
+import com.juanarton.core.data.source.local.room.FavoriteEntity
 import com.juanarton.core.data.source.remote.NetworkBoundRes
 import com.juanarton.core.data.source.remote.RemoteDataSource
 import com.juanarton.core.data.source.remote.Resource
 import com.juanarton.core.data.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
-class TMDBRepository(private val remoteDataSource: RemoteDataSource): TMDBRepositoryInterface {
+class TMDBRepository(
+    private val remoteDataSource: RemoteDataSource,
+    private val localDataSource: LocalDataSource
+): TMDBRepositoryInterface {
 
     override fun getPopularMovie(): Flow<PagingData<Movie>> {
         return Pager(
@@ -60,7 +64,7 @@ class TMDBRepository(private val remoteDataSource: RemoteDataSource): TMDBReposi
         }.asFlow()
     }
 
-    override fun multiSearch(searchString: String): Flow<PagingData<Search>> {
+    override fun multiSearch(searchString: String): Flow<PagingData<Movie>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 2,
@@ -72,5 +76,35 @@ class TMDBRepository(private val remoteDataSource: RemoteDataSource): TMDBReposi
             },
             initialKey = 1
         ).flow
+    }
+
+    override fun getListFavorite(): Flow<List<Movie>> {
+        return localDataSource.getListFavorite().map {
+            DataMapper.mapListEntityToDomain(it)
+        }
+    }
+
+    override suspend fun insertMovieFavorite(movie: Movie) {
+        return localDataSource.insertMovieFavorite(
+            DataMapper.mapDomainToEntity(movie)
+        )
+    }
+
+    override fun checkFavorite(movieId: String): Flow<Boolean> {
+        return localDataSource.checkFavorite(movieId)
+    }
+
+    override fun deleteFromFav(movie: Movie) {
+        localDataSource.deleteFromFav(
+            DataMapper.mapDomainToEntity(movie)
+        )
+    }
+
+    override fun getFavDetail(id: String): Flow<FavoriteEntity> {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateFavorite(favorite: FavoriteEntity) {
+        TODO("Not yet implemented")
     }
 }

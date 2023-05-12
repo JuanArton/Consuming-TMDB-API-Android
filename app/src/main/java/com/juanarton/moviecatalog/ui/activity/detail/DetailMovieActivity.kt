@@ -44,13 +44,15 @@ class DetailMovieActivity : AppCompatActivity() {
         if (movieData != null && mode != null){
             detailMovieViewModel.setProperty(movieData.id, mode)
 
+            detailMovieViewModel.checkFavorite()
+
             binding?.playButton?.setOnClickListener {
                 buildDialogBox()
             }
 
             val backdropLink = buildString {
                 append(BuildConfig.BASE_IMAGE_URL)
-                append(movieData.backdrop_path)
+                append(movieData.backdropPath)
             }
 
             val posterLink = buildString {
@@ -59,7 +61,7 @@ class DetailMovieActivity : AppCompatActivity() {
             }
 
             binding?.apply {
-                if (movieData.backdrop_path.isNullOrEmpty()){
+                if (movieData.backdropPath.isNullOrEmpty()){
                     playButton.visibility = View.INVISIBLE
                     watchTrailerText.text = resources.getString(R.string.noTrailer)
 
@@ -84,7 +86,7 @@ class DetailMovieActivity : AppCompatActivity() {
                 overviewContent.text = movieData.overview
 
 
-                val rating = movieData.vote_average?.times(10)?.toInt()
+                val rating = movieData.voteAverage?.times(10)?.toInt()
                 when(rating){
                     in 0..29 -> {
                         ratingBar.setIndicatorColor(ContextCompat.getColor(this@DetailMovieActivity, R.color.badRate))
@@ -103,6 +105,35 @@ class DetailMovieActivity : AppCompatActivity() {
                     }
                 }
                 ratingPercentage.text = rating.toString()
+
+                detailMovieViewModel.isFav.observe(this@DetailMovieActivity){ favStat ->
+                    when (favStat) {
+                        false -> {
+                            favoritButton.setImageDrawable(
+                                ContextCompat.getDrawable(
+                                    this@DetailMovieActivity, R.drawable.baseline_favorite_border_24
+                                )
+                            )
+                            detailMovieViewModel.setFav(favStat)
+                        }
+                        true -> {
+                            favoritButton.setImageDrawable(
+                                ContextCompat.getDrawable(
+                                    this@DetailMovieActivity, R.drawable.baseline_favorite_24
+                                )
+                            )
+                            detailMovieViewModel.setFav(favStat)
+                        }
+                    }
+                }
+
+                favoritButton.setOnClickListener {
+                    if (detailMovieViewModel._isFav.value == true){
+                        detailMovieViewModel.deleteFromFav(movieData)
+                    } else {
+                        detailMovieViewModel.insertMovieFavorite(movieData)
+                    }
+                }
             }
         }
     }

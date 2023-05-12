@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val className: String
-        get() = "com.example.favoritemodule.fragments.FavoriteScreenFragment"
+        get() = "com.juanarton.favorite.fragments.FavoriteScreenFragment"
 
     private fun instantiateFragment(className: String): Fragment? {
         return try {

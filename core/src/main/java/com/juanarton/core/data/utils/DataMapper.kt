@@ -5,8 +5,8 @@ import com.juanarton.core.data.api.search.SearchResponse
 import com.juanarton.core.data.api.tvShow.PopularTvShowResponse
 import com.juanarton.core.data.api.video.VideoTrailerResponse
 import com.juanarton.core.data.domain.model.Movie
-import com.juanarton.core.data.domain.model.Search
 import com.juanarton.core.data.domain.model.Trailer
+import com.juanarton.core.data.source.local.room.FavoriteEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
@@ -16,14 +16,14 @@ object DataMapper {
         response.map{
             val movie = Movie(
                 it.id,
-                it.backdrop_path,
-                it.genre_ids,
+                it.backdropPath,
                 it.overview,
-                it.first_air_date,
+                it.firstAirDate,
                 it.name,
-                it.vote_average,
-                it.vote_count,
-                it.poster
+                it.voteAverage,
+                it.voteCount,
+                it.poster,
+                Mode.TVSHOW.mode
             )
             tvList.add(movie)
         }
@@ -36,14 +36,14 @@ object DataMapper {
         response.map{
             val movie = Movie(
                 it.id,
-                it.backdrop_path,
-                it.genre_ids,
+                it.backdropPath,
                 it.overview,
-                it.release_date,
+                it.releaseDate,
                 it.title,
-                it.vote_average,
-                it.vote_count,
-                it.poster
+                it.voteAverage,
+                it.voteCount,
+                it.poster,
+                Mode.MOVIE.mode
             )
             movieList.add(movie)
         }
@@ -64,25 +64,24 @@ object DataMapper {
         return flowOf(trailerList)
     }
 
-    fun mapSearchResponseToMovieDomain(response: List<SearchResponse>): List<Search>{
-        val search = ArrayList<Search>()
+    fun mapSearchResponseToMovieDomain(response: List<SearchResponse>): List<Movie>{
+        val search = ArrayList<Movie>()
         response.map {
             val title = if (it.title.isNullOrEmpty()) it.name else it.title
-            val release_date = if (it.release_date.isNullOrEmpty()) it.first_air_date else it.release_date
+            val release_date = if (it.releaseDate.isNullOrEmpty()) it.firstAirDate else it.releaseDate
 
             if (!title.isNullOrEmpty() && !release_date.isNullOrEmpty()) {
                 search.add(
-                    Search(
+                    Movie(
                         it.id,
-                        it.backdrop_path,
-                        it.genre_ids,
+                        it.backdropPath,
                         it.overview,
                         release_date,
                         title,
-                        it.vote_average,
-                        it.vote_count,
+                        it.voteAverage,
+                        it.voteCount,
                         it.poster,
-                        it.media_type
+                        it.mediaType
                     )
                 )
             }
@@ -90,17 +89,57 @@ object DataMapper {
         return search
     }
 
-    fun mapSearchToMovieDomain(response: Search): Movie{
+    fun mapSearchToMovieDomain(response: Movie): Movie {
         return Movie(
             response.id,
-            response.backdrop_path,
-            response.genre_ids,
+            response.backdropPath,
             response.overview,
-            response.release_date,
+            response.releaseDate,
             response.title,
-            response.vote_average,
-            response.vote_count,
+            response.voteAverage,
+            response.voteCount,
             response.poster
         )
     }
+
+    fun mapListEntityToDomain(list: List<FavoriteEntity>): List<Movie> =
+        list.map {
+            Movie(
+                it.id,
+                it.backdropPath,
+                it.overview,
+                it.releaseDate,
+                it.title,
+                it.voteAverage,
+                it.voteCount,
+                it.poster,
+                it.mediaType
+            )
+        }
+
+    fun mapDomainToEntity(movie: Movie) =
+        FavoriteEntity (
+            movie.id,
+            movie.title,
+            movie.releaseDate,
+            movie.backdropPath,
+            movie.overview,
+            movie.poster,
+            movie.voteAverage,
+            movie.voteCount,
+            movie.mediaType
+        )
+
+    fun mapEntityToDomain(favoriteEntity: FavoriteEntity) =
+        Movie(
+            favoriteEntity.id,
+            favoriteEntity.backdropPath,
+            favoriteEntity.overview,
+            favoriteEntity.releaseDate,
+            favoriteEntity.title,
+            favoriteEntity.voteAverage,
+            favoriteEntity.voteCount,
+            favoriteEntity.poster,
+            favoriteEntity.mediaType
+        )
 }

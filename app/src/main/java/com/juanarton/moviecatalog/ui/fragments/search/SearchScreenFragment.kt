@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import com.juanarton.core.adapter.SearchPagingAdapter
-import com.juanarton.core.data.domain.model.Search
+import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.utils.DataMapper
 import com.juanarton.moviecatalog.databinding.FragmentSearchScreenBinding
 import com.juanarton.moviecatalog.ui.activity.detail.DetailMovieActivity
@@ -70,12 +70,12 @@ class SearchScreenFragment : Fragment() {
         })
     }
 
-    private fun showRecyclerList(movieList: PagingData<Search>){
-        val listener: (Search) -> Unit = {
+    private fun showRecyclerList(movieList: PagingData<Movie>){
+        val listener: (Movie) -> Unit = {
             val mappedToMovie = DataMapper.mapSearchToMovieDomain(it)
             val intent = Intent(context, DetailMovieActivity::class.java)
             intent.putExtra("movieData", mappedToMovie)
-            intent.putExtra("mode", it.media_type)
+            intent.putExtra("mode", it.mediaType)
             startActivity(intent)
         }
 

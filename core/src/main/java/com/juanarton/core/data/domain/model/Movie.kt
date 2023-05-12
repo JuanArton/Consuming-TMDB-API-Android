@@ -5,13 +5,13 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Movie(
-    val id: String,
-    val backdrop_path: String? = null,
-    val genre_ids: List<String>? = null,
+    val id: String = "",
+    val backdropPath: String? = null,
     val overview: String? = null,
-    val release_date: String? = null,
+    val releaseDate: String? = null,
     val title: String? = null,
-    val vote_average: Float? = null,
-    val vote_count: String? = null,
-    val poster: String? = null
+    val voteAverage: Float? = null,
+    val voteCount: String? = null,
+    val poster: String? = null,
+    val mediaType: String? = null
 ): Parcelable

@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.juanarton.core.BuildConfig
 import com.juanarton.core.adapter.MoviePagingAdapter
 import com.juanarton.core.data.domain.model.Movie
-import com.juanarton.core.data.utils.Mode
 import com.juanarton.moviecatalog.databinding.FragmentPopularMovieBinding
 import com.juanarton.moviecatalog.ui.activity.detail.DetailMovieActivity
 import kotlinx.coroutines.CoroutineScope
@@ -96,7 +95,7 @@ class PopularMovieFragment : Fragment() {
             for(i in 0..5){
                 val imageUrl = buildString{
                     append(BuildConfig.BASE_IMAGE_URL)
-                    append(data[i]?.backdrop_path)
+                    append(data[i]?.backdropPath)
                 }
                 carouselList.add(
                     CarouselItem(
@@ -115,7 +114,7 @@ class PopularMovieFragment : Fragment() {
         val listener: (Movie) -> Unit = {
             val intent = Intent(context, DetailMovieActivity::class.java)
             intent.putExtra("movieData", it)
-            intent.putExtra("mode", Mode.MOVIE.mode)
+            intent.putExtra("mode", it.mediaType)
             startActivity(intent)
         }
 

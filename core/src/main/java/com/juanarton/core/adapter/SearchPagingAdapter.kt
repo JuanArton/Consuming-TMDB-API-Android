@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.juanarton.core.BuildConfig
 import com.juanarton.core.R
-import com.juanarton.core.data.domain.model.Search
+import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.databinding.ItemViewBinding
 
 class SearchPagingAdapter (
-    private val onClick: (Search) -> Unit
-): PagingDataAdapter<Search, SearchPagingAdapter.GridViewHolder>(MovieComparator) {
+    private val onClick: (Movie) -> Unit
+): PagingDataAdapter<Movie, SearchPagingAdapter.GridViewHolder>(MovieComparator) {
 
-    object MovieComparator: DiffUtil.ItemCallback<Search>() {
-        override fun areItemsTheSame(oldItem: Search, newItem: Search): Boolean {
+    object MovieComparator: DiffUtil.ItemCallback<Movie>() {
+        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Search, newItem: Search): Boolean {
+        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
             return oldItem == newItem
         }
     }
@@ -42,7 +42,7 @@ class SearchPagingAdapter (
 
     inner class GridViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val binding = ItemViewBinding.bind(itemView)
-        fun bind(movie: Search){
+        fun bind(movie: Movie){
 
             with(itemView) {
                 val imageLink = buildString {

@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'com.google.devtools.ksp'
 }
 apply from: '../shared_dependencies.gradle'
 
@@ -19,7 +19,7 @@ android {
 
         buildConfigField "String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\""
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/\""
-        buildConfigField "String", "API_KEY", "\"***\""
+        buildConfigField "String", "API_KEY", "\"ba2ed4750f7fa7003a7827ddc9aded91\""
         buildConfigField "String", "BASE_POSTER_URL", "\"https://www.themoviedb.org/t/p/w300_and_h450_bestv2\""
     }
 
@@ -55,5 +55,7 @@ dependencies {
 
     implementation "androidx.room:room-runtime:2.5.1"
     implementation "androidx.room:room-ktx:2.5.1"
-    kapt "androidx.room:room-compiler:2.5.1"
+    ksp "androidx.room:room-compiler:2.5.1"
+    implementation "net.zetetic:android-database-sqlcipher:4.5.4@aar"
+    implementation "androidx.sqlite:sqlite-ktx:2.3.1"
 }

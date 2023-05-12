@@ -1,6 +1,7 @@
 package com.juanarton
 
 import android.app.Application
+import com.juanarton.core.di.databaseModule
 import com.juanarton.core.di.repositoryModule
 import com.juanarton.moviecatalog.di.useCaseModule
 import com.juanarton.moviecatalog.di.viewModelModule
@@ -19,7 +20,8 @@ class MyApplication : Application() {
                 listOf(
                     useCaseModule,
                     repositoryModule,
-                    viewModelModule
+                    viewModelModule,
+                    databaseModule
                 )
             )
         }
