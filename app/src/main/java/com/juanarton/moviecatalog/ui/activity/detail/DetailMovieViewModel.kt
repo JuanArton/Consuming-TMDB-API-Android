@@ -14,32 +14,28 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DetailMovieViewModel(private val tmdbRepositoryUseCase: TMDBRepositoryUseCase): ViewModel() {
-    private var id: MutableLiveData<String> = MutableLiveData()
-    private var mode: MutableLiveData<String> = MutableLiveData()
+    private var movie: MutableLiveData<Movie> = MutableLiveData()
     var _isFav: MutableLiveData<Boolean> = MutableLiveData(false)
     var isFav: LiveData<Boolean> = _isFav
 
-    fun setProperty(id: String, mode: String){
-        this.id.value = id
-        this.mode.value = mode
+    fun setProperty(id: Movie){
+        this.movie.value = id
     }
 
     fun setFav(favStat: Boolean){
         _isFav.value = favStat
     }
 
-    fun movieTrailer(): LiveData<Resource<List<Trailer>>> = id.switchMap {
-        mode.switchMap { mode ->
-            tmdbRepositoryUseCase.getMovieTrailer(it, mode).asLiveData()
-        }
+    fun movieTrailer(): LiveData<Resource<List<Trailer>>> = movie.switchMap {
+        tmdbRepositoryUseCase.getMovieTrailer(it.id, it.mediaType).asLiveData()
     }
 
     fun insertMovieFavorite(movie: Movie) = CoroutineScope(Dispatchers.IO).launch {
         tmdbRepositoryUseCase.insertMovieFavorite(movie)
     }
     fun checkFavorite() {
-        id.value?.let {
-            isFav = tmdbRepositoryUseCase.checkFavorite(it).asLiveData()
+        movie.value?.let {
+            isFav = tmdbRepositoryUseCase.checkFavorite(it.id).asLiveData()
         }
     }
 

@@ -13,5 +13,5 @@ data class Movie(
     val voteAverage: Float? = null,
     val voteCount: String? = null,
     val poster: String? = null,
-    val mediaType: String? = null
+    val mediaType: String
 ): Parcelable

@@ -20,4 +20,5 @@
     <string name="user_nscore">User \nScore</string>
     <string name="overview">Overview</string>
     <string name="noTrailer">No Trailer Available</string>
+    <string name="endOfPage">You have reached the end of the page</string>
 </resources>

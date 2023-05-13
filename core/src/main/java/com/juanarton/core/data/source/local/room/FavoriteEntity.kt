@@ -33,5 +33,5 @@ data class FavoriteEntity (
     val voteCount: String? = "",
 
     @ColumnInfo(name = "media_type")
-    val mediaType: String? = ""
+    val mediaType: String
 )

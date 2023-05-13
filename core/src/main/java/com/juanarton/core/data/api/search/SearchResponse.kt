@@ -34,5 +34,5 @@ data class SearchResponse(
     val poster: String? = null,
 
     @field:SerializedName("media_type")
-    val mediaType: String? = null
+    val mediaType: String
 )

@@ -39,7 +39,7 @@ class RemoteDataSource{
             }
         }.flowOn(Dispatchers.IO)
 
-    suspend fun getTrailer(id: Int, mode: String): List<VideoTrailerResponse>{
+    private suspend fun getTrailer(id: Int, mode: String): List<VideoTrailerResponse>{
         val trailer = when(mode){
             Mode.TVSHOW.mode -> API.services.getMovieVideo(Mode.TVSHOW.mode, id, BuildConfig.API_KEY, "en")
             else -> {

@@ -68,15 +68,15 @@ object DataMapper {
         val search = ArrayList<Movie>()
         response.map {
             val title = if (it.title.isNullOrEmpty()) it.name else it.title
-            val release_date = if (it.releaseDate.isNullOrEmpty()) it.firstAirDate else it.releaseDate
+            val releaseDate = if (it.releaseDate.isNullOrEmpty()) it.firstAirDate else it.releaseDate
 
-            if (!title.isNullOrEmpty() && !release_date.isNullOrEmpty()) {
+            if (!title.isNullOrEmpty() && !releaseDate.isNullOrEmpty()) {
                 search.add(
                     Movie(
                         it.id,
                         it.backdropPath,
                         it.overview,
-                        release_date,
+                        releaseDate,
                         title,
                         it.voteAverage,
                         it.voteCount,
@@ -98,7 +98,8 @@ object DataMapper {
             response.title,
             response.voteAverage,
             response.voteCount,
-            response.poster
+            response.poster,
+            response.mediaType
         )
     }
 

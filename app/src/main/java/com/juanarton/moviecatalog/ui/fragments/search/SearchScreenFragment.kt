@@ -4,21 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.PagingData
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
-import com.juanarton.core.adapter.SearchPagingAdapter
+import com.juanarton.core.adapter.MoviePagingAdapter
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.utils.DataMapper
+import com.juanarton.moviecatalog.R
 import com.juanarton.moviecatalog.databinding.FragmentSearchScreenBinding
 import com.juanarton.moviecatalog.ui.activity.detail.DetailMovieActivity
-import kotlinx.coroutines.flow.distinctUntilChangedBy
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,6 +44,19 @@ class SearchScreenFragment : Fragment() {
         val handler = Handler(Looper.getMainLooper())
         var runnable: Runnable? = null
 
+        val listener: (Movie) -> Unit = {
+            val mappedToMovie = DataMapper.mapSearchToMovieDomain(it)
+            val intent = Intent(context, DetailMovieActivity::class.java)
+            intent.putExtra("movieData", mappedToMovie)
+            startActivity(intent)
+        }
+
+        binding?.searchRecyclerContainer?.layoutManager = GridLayoutManager(activity, 3)
+        val rvAdapter = MoviePagingAdapter(listener)
+        binding?.searchRecyclerContainer?.adapter = rvAdapter
+
+        binding?.refreshAnimation?.playAnimation()
+
         binding?.searchBar?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -56,9 +70,6 @@ class SearchScreenFragment : Fragment() {
                 runnable = Runnable {
                     newText?.let {searchString ->
                         searchViewModel.setSearchString(searchString)
-                        searchViewModel.multiSearch().observe(viewLifecycleOwner){
-                            showRecyclerList(it)
-                        }
                     }
                 }
 
@@ -68,26 +79,33 @@ class SearchScreenFragment : Fragment() {
                 return false
             }
         })
-    }
 
-    private fun showRecyclerList(movieList: PagingData<Movie>){
-        val listener: (Movie) -> Unit = {
-            val mappedToMovie = DataMapper.mapSearchToMovieDomain(it)
-            val intent = Intent(context, DetailMovieActivity::class.java)
-            intent.putExtra("movieData", mappedToMovie)
-            intent.putExtra("mode", it.mediaType)
-            startActivity(intent)
+        searchViewModel.movieSearchList.observe(viewLifecycleOwner){
+            rvAdapter.submitData(lifecycle, it)
         }
 
-        binding?.searchRecyclerContainer?.layoutManager = GridLayoutManager(activity, 3)
-        val rvAdapter = SearchPagingAdapter(listener)
-        binding?.searchRecyclerContainer?.adapter = rvAdapter
-        rvAdapter.submitData(lifecycle, movieList)
-
         lifecycleScope.launch {
-            rvAdapter.loadStateFlow.distinctUntilChangedBy { it.refresh }.collect {
+            rvAdapter.loadStateFlow.collectLatest {loadState ->
                 rvAdapter.snapshot().toList().let {
-                    Log.d("pagingdata", it.toString())
+
+                    binding?.apply {
+                        if (loadState.refresh is LoadState.Loading ||
+                            loadState.append is LoadState.Loading)
+                        {
+                            nodataText.text = resources.getString(R.string.loading)
+                            refreshAnimation.setAnimation("moody-giraffe.json")
+                            nodataText.isVisible = true
+                            refreshAnimation.isVisible = true
+                        }
+                        else if (loadState.refresh !is LoadState.Loading ||
+                            loadState.append !is LoadState.Loading)
+                        {
+                            nodataText.isVisible = false
+                            refreshAnimation.isVisible = false
+                        }
+
+                        refreshAnimation.playAnimation()
+                    }
                 }
             }
         }
