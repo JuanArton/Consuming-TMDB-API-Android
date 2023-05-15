@@ -60,7 +60,6 @@ class RemoteDataSource{
 
             override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
                 return try {
-                    Log.d("pagingtest", "load")
                     val position = params.key ?: 1
                     val searchResult = API.services.multiSearch(searchString, true, BuildConfig.API_KEY, "en", position).responseList
                     val mappedResult = DataMapper.mapSearchResponseToMovieDomain(searchResult)

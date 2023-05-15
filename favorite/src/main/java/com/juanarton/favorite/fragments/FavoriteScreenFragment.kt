@@ -48,9 +48,5 @@ class FavoriteScreenFragment : Fragment() {
             Log.d("test", it.toString())
             rvAdapter.submit(it)
         }
-
-        binding?.apply {
-
-        }
     }
 }

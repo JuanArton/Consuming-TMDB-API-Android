@@ -22,7 +22,6 @@ class MyApplication : Application() {
                     repositoryModule,
                     viewModelModule,
                     databaseModule,
-
                 )
             )
         }

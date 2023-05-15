@@ -1,7 +1,9 @@
 package com.juanarton.core.data.api.movie
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class PopularMovieResponse(
     @field:SerializedName("id")
     val id: String,

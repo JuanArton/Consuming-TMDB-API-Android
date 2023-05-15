@@ -1,7 +1,9 @@
 package com.juanarton.core.data.api.video
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 class VideoTrailerResponse (
     @field:SerializedName("key")
     val key: String,

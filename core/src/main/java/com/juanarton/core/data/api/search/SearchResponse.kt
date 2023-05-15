@@ -1,7 +1,9 @@
 package com.juanarton.core.data.api.search
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class SearchResponse(
     @field:SerializedName("id")
     val id: String,

@@ -1,7 +1,9 @@
 package com.juanarton.core.data.api.tvShow
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 class PopularTvShowResponse (
     @field:SerializedName("id")
     val id: String,
