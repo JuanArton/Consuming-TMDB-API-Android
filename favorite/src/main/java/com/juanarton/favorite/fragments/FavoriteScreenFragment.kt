@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.juanarton.core.adapter.FavoriteRecylerAdapter
+import com.juanarton.favorite.adapter.FavoriteRecylerAdapter
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.favorite.databinding.FragmentFavoriteScreenBinding
 import com.juanarton.favorite.di.favoriteMovieModule

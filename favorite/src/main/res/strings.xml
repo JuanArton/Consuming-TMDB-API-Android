@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Nextfix</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_favoritemodule">FavoriteModule</string>
+    <string name="favorite">Favorite</string>
+    <string name="feed">Feed</string>
+    <string name="search">Search</string>
+    <string name="title_core">core</string>
+    <string name="title_favorite">favorite</string>
+    <string name="no_data">No Data</string>
+    <string name="loading">Loading</string>
+    <string name="movie">Movie</string>
+    <string name="tv_show">TV Show</string>
+    <string name="poster">Poster</string>
+    <string name="watch_trailer">Watch Trailer</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="percentage_hint">0</string>
+    <string name="user_nscore">User \nScore</string>
+    <string name="overview">Overview</string>
+    <string name="noTrailer">No Trailer Available</string>
+    <string name="endOfPage">You have reached the end of the page</string>
+</resources>

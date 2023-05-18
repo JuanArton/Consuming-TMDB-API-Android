@@ -1,0 +1,7 @@
+<resources>
+    <string name="title">Title</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="percentage_hint">0</string>
+    <string name="overview">Overview</string>
+</resources>

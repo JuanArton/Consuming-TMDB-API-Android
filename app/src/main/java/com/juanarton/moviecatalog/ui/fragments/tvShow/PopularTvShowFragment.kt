@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -49,7 +48,7 @@ class PopularTvShowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _imgCarousel = binding?.imgcarousel
+        _imgCarousel = binding?.carouselTvShow
         imgCarousel?.registerLifecycle(lifecycle)
 
         val listener: (Movie) -> Unit = {
@@ -58,11 +57,11 @@ class PopularTvShowFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding?.tvShowRecyclerContainer?.layoutManager = GridLayoutManager(activity, 3)
+        binding?.rvTvShow?.layoutManager = GridLayoutManager(activity, 3)
         val rvAdapter = MoviePagingAdapter(listener)
-        binding?.tvShowRecyclerContainer?.adapter = rvAdapter
+        binding?.rvTvShow?.adapter = rvAdapter
 
-        binding?.refreshAnimation?.playAnimation()
+        binding?.tvShowLoadingAnimation?.playAnimation()
 
         popularTvShowViewModel.getPopularTvShow().observe(viewLifecycleOwner){
             rvAdapter.submitData(lifecycle, it)
@@ -106,19 +105,19 @@ class PopularTvShowFragment : Fragment() {
                         if (loadState.refresh is LoadState.Loading ||
                             loadState.append is LoadState.Loading)
                         {
-                            nodataText.text = resources.getString(R.string.loading)
-                            refreshAnimation.setAnimation("moody-giraffe.json")
-                            nodataText.isVisible = true
-                            refreshAnimation.isVisible = true
+                            tvTvShowNoData.text = resources.getString(R.string.loading)
+                            tvShowLoadingAnimation.setAnimation("moody-giraffe.json")
+                            tvTvShowNoData.isVisible = true
+                            tvShowLoadingAnimation.isVisible = true
                         }
                         else if (loadState.refresh !is LoadState.Loading ||
                             loadState.append !is LoadState.Loading)
                         {
-                            nodataText.isVisible = false
-                            refreshAnimation.isVisible = false
+                            tvTvShowNoData.isVisible = false
+                            tvShowLoadingAnimation.isVisible = false
                         }
 
-                        refreshAnimation.playAnimation()
+                        tvShowLoadingAnimation.playAnimation()
                     }
                 }
             }

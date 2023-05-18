@@ -7,7 +7,7 @@
         app:constraintSetStart="@+id/start">
         <OnSwipe
             app:dragDirection="dragUp"
-            app:touchAnchorId="@id/movieRecyclerContainer"
+            app:touchAnchorId="@id/rvMovie"
             app:touchAnchorSide="top"
             />
     </Transition>
@@ -15,33 +15,33 @@
     <ConstraintSet android:id="@+id/start">
         <Constraint android:id="@+id/widget" />
         <Constraint
-            android:id="@+id/movieRecyclerContainer"
+            android:id="@+id/rvMovie"
             android:layout_height="0dp"
             android:layout_width="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgcarousel" />
+            app:layout_constraintTop_toBottomOf="@+id/carouselMovieImage" />
         <Constraint
-            android:id="@+id/refreshAnimation"
+            android:id="@+id/lottieMovieLoading"
             android:layout_height="200dp"
             android:layout_width="200dp"
-            app:layout_constraintTop_toBottomOf="@+id/imgcarousel"
-            app:layout_constraintEnd_toEndOf="@+id/movieRecyclerContainer"
-            app:layout_constraintStart_toStartOf="@+id/movieRecyclerContainer"
-            app:layout_constraintBottom_toBottomOf="@+id/movieRecyclerContainer">
+            app:layout_constraintTop_toBottomOf="@+id/carouselMovieImage"
+            app:layout_constraintEnd_toEndOf="@+id/rvMovie"
+            app:layout_constraintStart_toStartOf="@+id/rvMovie"
+            app:layout_constraintBottom_toBottomOf="@+id/rvMovie">
             <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
         </Constraint>
         <Constraint
-            android:id="@+id/nodataText"
+            android:id="@+id/tvMovieNoData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/movieRecyclerContainer"
-            app:layout_constraintStart_toStartOf="@+id/movieRecyclerContainer"
-            app:layout_constraintBottom_toBottomOf="@+id/movieRecyclerContainer"
-            app:layout_constraintTop_toBottomOf="@id/refreshAnimation">
+            app:layout_constraintEnd_toEndOf="@+id/rvMovie"
+            app:layout_constraintStart_toStartOf="@+id/rvMovie"
+            app:layout_constraintBottom_toBottomOf="@+id/rvMovie"
+            app:layout_constraintTop_toBottomOf="@id/lottieMovieLoading">
             <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
         </Constraint>
         <Constraint
-            android:id="@+id/imgcarousel"
+            android:id="@+id/carouselMovieImage"
             android:layout_width="match_parent"
             android:layout_height="236dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,33 +51,33 @@
     <ConstraintSet android:id="@+id/end">
         <Constraint android:id="@id/widget" />
         <Constraint
-            android:id="@+id/movieRecyclerContainer"
+            android:id="@+id/rvMovie"
             android:layout_height="0dp"
             android:layout_width="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgcarousel" />
+            app:layout_constraintTop_toBottomOf="@+id/carouselMovieImage" />
         <Constraint
-            android:id="@+id/refreshAnimation"
+            android:id="@+id/lottieMovieLoading"
             android:layout_height="200dp"
             android:layout_width="200dp"
-            app:layout_constraintTop_toBottomOf="@+id/imgcarousel"
-            app:layout_constraintEnd_toEndOf="@+id/movieRecyclerContainer"
-            app:layout_constraintStart_toStartOf="@+id/movieRecyclerContainer"
-            app:layout_constraintBottom_toBottomOf="@+id/movieRecyclerContainer">
+            app:layout_constraintTop_toBottomOf="@+id/carouselMovieImage"
+            app:layout_constraintEnd_toEndOf="@+id/rvMovie"
+            app:layout_constraintStart_toStartOf="@+id/rvMovie"
+            app:layout_constraintBottom_toBottomOf="@+id/rvMovie">
             <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
         </Constraint>
         <Constraint
-            android:id="@+id/nodataText"
+            android:id="@+id/tvMovieNoData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/movieRecyclerContainer"
-            app:layout_constraintStart_toStartOf="@+id/movieRecyclerContainer"
-            app:layout_constraintBottom_toBottomOf="@+id/movieRecyclerContainer"
-            app:layout_constraintTop_toBottomOf="@id/refreshAnimation">
+            app:layout_constraintEnd_toEndOf="@+id/rvMovie"
+            app:layout_constraintStart_toStartOf="@+id/rvMovie"
+            app:layout_constraintBottom_toBottomOf="@+id/rvMovie"
+            app:layout_constraintTop_toBottomOf="@id/lottieMovieLoading">
             <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
         </Constraint>
         <Constraint
-            android:id="@+id/imgcarousel"
+            android:id="@+id/carouselMovieImage"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             app:layout_constraintTop_toTopOf="parent"

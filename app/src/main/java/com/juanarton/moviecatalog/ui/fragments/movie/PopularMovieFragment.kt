@@ -48,7 +48,7 @@ class PopularMovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _imgCarousel = binding?.imgcarousel
+        _imgCarousel = binding?.carouselMovieImage
         imgCarousel?.registerLifecycle(lifecycle)
 
         val listener: (Movie) -> Unit = {
@@ -57,11 +57,11 @@ class PopularMovieFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding?.movieRecyclerContainer?.layoutManager = GridLayoutManager(activity, 3)
+        binding?.rvMovie?.layoutManager = GridLayoutManager(activity, 3)
         val rvAdapter = MoviePagingAdapter(listener)
-        binding?.movieRecyclerContainer?.adapter = rvAdapter
+        binding?.rvMovie?.adapter = rvAdapter
 
-        binding?.refreshAnimation?.playAnimation()
+        binding?.lottieMovieLoading?.playAnimation()
 
         popularMovieViewModel.getPopularMovie().observe(viewLifecycleOwner){
             rvAdapter.submitData(lifecycle, it)
@@ -105,19 +105,19 @@ class PopularMovieFragment : Fragment() {
                         if (loadState.refresh is LoadState.Loading ||
                             loadState.append is LoadState.Loading)
                         {
-                            nodataText.text = resources.getString(R.string.loading)
-                            refreshAnimation.setAnimation("moody-giraffe.json")
-                            nodataText.isVisible = true
-                            refreshAnimation.isVisible = true
+                            tvMovieNoData.text = resources.getString(R.string.loading)
+                            lottieMovieLoading.setAnimation("moody-giraffe.json")
+                            tvMovieNoData.isVisible = true
+                            lottieMovieLoading.isVisible = true
                         }
                         else if (loadState.refresh !is LoadState.Loading ||
                             loadState.append !is LoadState.Loading)
                         {
-                            nodataText.isVisible = false
-                            refreshAnimation.isVisible = false
+                            tvMovieNoData.isVisible = false
+                            lottieMovieLoading.isVisible = false
                         }
 
-                        refreshAnimation.playAnimation()
+                        lottieMovieLoading.playAnimation()
                     }
                 }
             }

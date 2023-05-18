@@ -7,7 +7,7 @@
         app:constraintSetStart="@+id/start">
         <OnSwipe
             app:dragDirection="dragUp"
-            app:touchAnchorId="@id/tvShowRecyclerContainer"
+            app:touchAnchorId="@id/rvTvShow"
             app:touchAnchorSide="top"
             />
     </Transition>
@@ -15,33 +15,33 @@
     <ConstraintSet android:id="@+id/start">
         <Constraint android:id="@+id/widget" />
         <Constraint
-            android:id="@+id/tvShowRecyclerContainer"
+            android:id="@+id/rvTvShow"
             android:layout_height="0dp"
             android:layout_width="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgcarousel" />
+            app:layout_constraintTop_toBottomOf="@+id/carouselTvShow" />
         <Constraint
-            android:id="@+id/refreshAnimation"
+            android:id="@+id/tvShowLoadingAnimation"
             android:layout_height="200dp"
             android:layout_width="200dp"
-            app:layout_constraintTop_toBottomOf="@+id/imgcarousel"
-            app:layout_constraintEnd_toEndOf="@+id/tvShowRecyclerContainer"
-            app:layout_constraintStart_toStartOf="@+id/tvShowRecyclerContainer"
-            app:layout_constraintBottom_toBottomOf="@+id/tvShowRecyclerContainer">
+            app:layout_constraintTop_toBottomOf="@+id/carouselTvShow"
+            app:layout_constraintEnd_toEndOf="@+id/rvTvShow"
+            app:layout_constraintStart_toStartOf="@+id/rvTvShow"
+            app:layout_constraintBottom_toBottomOf="@+id/rvTvShow">
             <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
         </Constraint>
         <Constraint
-            android:id="@+id/nodataText"
+            android:id="@+id/tvTvShowNoData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/tvShowRecyclerContainer"
-            app:layout_constraintStart_toStartOf="@+id/tvShowRecyclerContainer"
-            app:layout_constraintBottom_toBottomOf="@+id/tvShowRecyclerContainer"
-            app:layout_constraintTop_toBottomOf="@id/refreshAnimation">
+            app:layout_constraintEnd_toEndOf="@+id/rvTvShow"
+            app:layout_constraintStart_toStartOf="@+id/rvTvShow"
+            app:layout_constraintBottom_toBottomOf="@+id/rvTvShow"
+            app:layout_constraintTop_toBottomOf="@id/tvShowLoadingAnimation">
             <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
         </Constraint>
         <Constraint
-            android:id="@+id/imgcarousel"
+            android:id="@+id/carouselTvShow"
             android:layout_width="match_parent"
             android:layout_height="236dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,33 +51,33 @@
     <ConstraintSet android:id="@+id/end">
         <Constraint android:id="@id/widget" />
         <Constraint
-            android:id="@+id/tvShowRecyclerContainer"
+            android:id="@+id/rvTvShow"
             android:layout_height="0dp"
             android:layout_width="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgcarousel" />
+            app:layout_constraintTop_toBottomOf="@+id/carouselTvShow" />
         <Constraint
-            android:id="@+id/refreshAnimation"
+            android:id="@+id/tvShowLoadingAnimation"
             android:layout_height="200dp"
             android:layout_width="200dp"
-            app:layout_constraintTop_toBottomOf="@+id/imgcarousel"
-            app:layout_constraintEnd_toEndOf="@+id/tvShowRecyclerContainer"
-            app:layout_constraintStart_toStartOf="@+id/tvShowRecyclerContainer"
-            app:layout_constraintBottom_toBottomOf="@+id/tvShowRecyclerContainer">
+            app:layout_constraintTop_toBottomOf="@+id/carouselTvShow"
+            app:layout_constraintEnd_toEndOf="@+id/rvTvShow"
+            app:layout_constraintStart_toStartOf="@+id/rvTvShow"
+            app:layout_constraintBottom_toBottomOf="@+id/rvTvShow">
             <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
         </Constraint>
         <Constraint
-            android:id="@+id/nodataText"
+            android:id="@+id/tvTvShowNoData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/tvShowRecyclerContainer"
-            app:layout_constraintStart_toStartOf="@+id/tvShowRecyclerContainer"
-            app:layout_constraintBottom_toBottomOf="@+id/tvShowRecyclerContainer"
-            app:layout_constraintTop_toBottomOf="@id/refreshAnimation">
+            app:layout_constraintEnd_toEndOf="@+id/rvTvShow"
+            app:layout_constraintStart_toStartOf="@+id/rvTvShow"
+            app:layout_constraintBottom_toBottomOf="@+id/rvTvShow"
+            app:layout_constraintTop_toBottomOf="@id/tvShowLoadingAnimation">
             <PropertySet app:applyMotionScene="false" app:visibilityMode="ignore" />
         </Constraint>
         <Constraint
-            android:id="@+id/imgcarousel"
+            android:id="@+id/carouselTvShow"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             app:layout_constraintTop_toTopOf="parent"

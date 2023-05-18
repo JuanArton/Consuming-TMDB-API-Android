@@ -20,7 +20,5 @@ class TMDBRepositoryInteractor(private val tmdbRepository: TMDBRepositoryInterfa
     override fun getFavDetail(id: String): Flow<FavoriteEntity> {
         TODO("Not yet implemented")
     }
-    override fun updateFavorite(favorite: FavoriteEntity) {
-        TODO("Not yet implemented")
-    }
+    override fun updateFavorite(movie: Movie) = tmdbRepository.updateFavorite(movie)
 }

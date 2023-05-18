@@ -98,3 +98,7 @@
 }
 
 -keep public class kotlin.**
+-dontnote kotlinx.serialization.**
+-keep class com.juanarton.core.data.domain.usecase.TMDBRepositoryUseCase{
+    *** getListFavorite();
+}

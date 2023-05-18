@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AndroidLayouts">
     <shared>
       <config />
@@ -20,24 +23,70 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/MyApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/MyApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/debug/app-debug.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/debug/output-metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/output-metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/activity/detail/DetailMovieActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/activity/detail/DetailMovieActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/movie/PopularMovieFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/movie/PopularMovieFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/search/SearchScreenFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/search/SearchScreenFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/search/SearchViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/search/SearchViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/tvShow/PopularTvShowFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/juanarton/moviecatalog/ui/fragments/tvShow/PopularTvShowFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_home_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-v26/activity_detail_movie.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-v26/activity_detail_movie.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail_movie.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail_movie.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_player.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_player.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_popular_movie.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_popular_movie.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_popular_tv_show.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_popular_tv_show.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search_screen.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/fragment_popular_movie_scene.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/fragment_popular_movie_scene.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/fragment_popular_tv_scene.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/fragment_popular_tv_scene.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/core/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/consumer-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/core/consumer-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/API.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/API.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/movie/PopularMovieResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/movie/PopularMovieResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/movie/TMDBMovieResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/movie/TMDBMovieResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/search/SearchResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/search/SearchResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/search/TMDBSearchResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/search/TMDBSearchResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/tvShow/PopularTvShowResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/tvShow/PopularTvShowResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/adapter/FavoriteRecylerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/favorite/src/main/java/com/juanarton/favorite/adapter/FavoriteRecylerAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/APIStatus.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/tvShow/TMDBTvShowResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/tvShow/TMDBTvShowResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/video/TMDBVideoResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/video/TMDBVideoResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/video/VideoTrailerResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/api/video/VideoTrailerResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/source/remote/RemoteDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/source/remote/RemoteDataSource.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/favorite/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/repository/TMDBRepositoryInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/repository/TMDBRepositoryInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryInteractor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/domain/usecase/TMDBRepositoryUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/repository/TMDBRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/repository/TMDBRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/source/local/room/FavoriteEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/juanarton/core/data/source/local/room/FavoriteEntity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/res/layout-v26/favorite_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/favorite/src/main/res/layout/favorite_item_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/res/layout/favorite_item_view.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/res/layout/item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/res/layout/item_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/favorite/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/favorite/src/main/java/com/juanarton/favorite/fragments/FavoriteScreenFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/favorite/src/main/java/com/juanarton/favorite/fragments/FavoriteScreenFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared_dependencies.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/shared_dependencies.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,18 +126,18 @@
         <option value="Kotlin Enum" />
         <option value="Kotlin Data Class" />
         <option value="resourceFile" />
-        <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
         <option value="Kotlin File" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
   <component name="GenerateSignedApkSettings">
+    <option name="EXPORT_PRIVATE_KEY" value="false" />
     <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/../../Bangkit/Key/keyBangkit.jks" />
     <option name="KEY_ALIAS" value="key0" />
     <option name="REMEMBER_PASSWORDS" value="true" />
-    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -106,38 +155,42 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ApkExportedModule": "TMDB_Catalog.app",
-    "ExportApk.ApkPathForTMDB_Catalog.app": "/FTPShare/Data/Data/Learn Android Again/MovieCatalog/app",
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "android-custom-view/FTPShare/Data/Data/Learn Android Again/MovieCatalog/core/src/main/java/com/juanarton/core/customview/SmartNestedScrollView.kt_SELECTED": "SmartNestedScrollView",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "last_opened_file_path": "/FTPShare/Data/Data/Bangkit/Key/keyBangkit.jks",
-    "project.structure.last.edited": "SDK Location",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ApkExportedModule&quot;: &quot;TMDB_Catalog.app&quot;,
+    &quot;BundleExportedModule&quot;: &quot;TMDB_Catalog.app&quot;,
+    &quot;ExportApk.ApkPathForTMDB_Catalog.app&quot;: &quot;/FTPShare/Data/Data/Learn Android Again/MovieCatalog/app&quot;,
+    &quot;ExportBundle.BundlePathForTMDB_Catalog.app&quot;: &quot;/FTPShare/Data/Data/Learn Android Again/MovieCatalog/app&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;android-custom-view/FTPShare/Data/Data/Learn Android Again/MovieCatalog/core/src/main/java/com/juanarton/core/customview/SmartNestedScrollView.kt_SELECTED&quot;: &quot;SmartNestedScrollView&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/FTPShare/Data/Data/Learn Android Again/MovieCatalog/favorite/src/main/res/values&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDK Location&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "debug"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/favorite/src/main/res/values" />
+      <recent name="$PROJECT_DIR$/favorite/src/main/res" />
       <recent name="$PROJECT_DIR$/core/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/assets" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/xml" />
-      <recent name="$PROJECT_DIR$/core/src/main/res/values" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/favorite/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/core/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
     </key>
@@ -146,11 +199,11 @@
       <recent name="com.juanarton.moviecatalog.ui.activity.popUp" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.juanarton.favorite.adapter" />
       <recent name="com.juanarton.moviecatalog.ui.fragments.search" />
       <recent name="com.juanarton.moviecatalog.ui.activity.detail" />
       <recent name="com.juanarton.moviecatalog.ui.fragments.activity" />
       <recent name="com.juanarton.core.data.api.movie" />
-      <recent name="com.juanarton.moviecatalog.ui.fragments.home" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="layout" />

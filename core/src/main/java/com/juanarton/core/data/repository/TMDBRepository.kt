@@ -104,7 +104,9 @@ class TMDBRepository(
         TODO("Not yet implemented")
     }
 
-    override fun updateFavorite(favorite: FavoriteEntity) {
-        TODO("Not yet implemented")
+    override fun updateFavorite(movie: Movie) {
+        localDataSource.updateFavorite(
+            DataMapper.mapDomainToEntity(movie)
+        )
     }
 }

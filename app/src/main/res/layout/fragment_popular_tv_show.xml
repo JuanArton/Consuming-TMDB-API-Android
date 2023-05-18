@@ -11,7 +11,7 @@
     app:layoutDescription="@xml/fragment_popular_tv_scene">
 
     <org.imaginativeworld.whynotimagecarousel.ImageCarousel
-        android:id="@+id/imgcarousel"
+        android:id="@+id/carouselTvShow"
         android:layout_width="match_parent"
         android:layout_height="236dp"
         android:background="@color/black"
@@ -23,7 +23,7 @@
         app:showNavigationButtons="false" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tvShowRecyclerContainer"
+        android:id="@+id/rvTvShow"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingTop="10dp"
@@ -32,10 +32,10 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/refreshAnimation"
+        android:id="@+id/tvShowLoadingAnimation"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_below="@id/imgcarousel"
+        android:layout_below="@id/carouselTvShow"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         app:lottie_autoPlay="true"
@@ -43,10 +43,10 @@
         app:lottie_loop="true" />
 
     <TextView
-        android:id="@+id/nodataText"
+        android:id="@+id/tvTvShowNoData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/refreshAnimation"
+        android:layout_below="@id/tvShowLoadingAnimation"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"

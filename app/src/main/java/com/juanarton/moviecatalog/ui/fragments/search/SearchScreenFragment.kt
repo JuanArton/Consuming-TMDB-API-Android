@@ -51,11 +51,11 @@ class SearchScreenFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding?.searchRecyclerContainer?.layoutManager = GridLayoutManager(activity, 3)
+        binding?.rvSearch?.layoutManager = GridLayoutManager(activity, 3)
         val rvAdapter = MoviePagingAdapter(listener)
-        binding?.searchRecyclerContainer?.adapter = rvAdapter
+        binding?.rvSearch?.adapter = rvAdapter
 
-        binding?.refreshAnimation?.playAnimation()
+        binding?.lottieSearchLoading?.playAnimation()
 
         binding?.searchBar?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -92,19 +92,19 @@ class SearchScreenFragment : Fragment() {
                         if (loadState.refresh is LoadState.Loading ||
                             loadState.append is LoadState.Loading)
                         {
-                            nodataText.text = resources.getString(R.string.loading)
-                            refreshAnimation.setAnimation("moody-giraffe.json")
-                            nodataText.isVisible = true
-                            refreshAnimation.isVisible = true
+                            tvSearcNoData.text = resources.getString(R.string.loading)
+                            lottieSearchLoading.setAnimation("moody-giraffe.json")
+                            tvSearcNoData.isVisible = true
+                            lottieSearchLoading.isVisible = true
                         }
                         else if (loadState.refresh !is LoadState.Loading ||
                             loadState.append !is LoadState.Loading)
                         {
-                            nodataText.isVisible = false
-                            refreshAnimation.isVisible = false
+                            tvSearcNoData.isVisible = false
+                            lottieSearchLoading.isVisible = false
                         }
 
-                        refreshAnimation.playAnimation()
+                        lottieSearchLoading.playAnimation()
                     }
                 }
             }

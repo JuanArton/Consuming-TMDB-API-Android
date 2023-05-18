@@ -17,5 +17,5 @@ interface TMDBRepositoryInterface {
     fun checkFavorite(movieId: String): Flow<Boolean>
     fun deleteFromFav(movie: Movie)
     fun getFavDetail(id: String): Flow<FavoriteEntity>
-    fun updateFavorite(favorite: FavoriteEntity)
+    fun updateFavorite(movie: Movie)
 }

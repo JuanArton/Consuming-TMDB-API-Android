@@ -17,10 +17,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        buildConfigField "String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\""
+        buildConfigField "String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w1066_and_h600_bestv2\""
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/\""
         buildConfigField "String", "API_KEY", "\"***\""
-        buildConfigField "String", "BASE_POSTER_URL", "\"https://www.themoviedb.org/t/p/w300_and_h450_bestv2\""
+        buildConfigField "String", "BASE_POSTER_URL", "\"https://www.themoviedb.org/t/p/w600_and_h900_bestv2\""
     }
 
     buildFeatures{
@@ -30,11 +30,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

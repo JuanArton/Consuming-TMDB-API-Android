@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#   public *;
+-keep class org.koin.core.context.DefaultContextExtKt{
+    <methods>;
+}
+-dontnote kotlinx.serialization.**
+-keep class com.juanarton.favorite.**

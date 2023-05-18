@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,167 +7,206 @@
     android:background="@color/black"
     tools:context=".ui.activity.detail.DetailMovieActivity">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/movieBackdrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/movieBackdrop"
-        app:layout_constraintTop_toTopOf="@+id/movieBackdrop">
-        <ImageButton
-            android:id="@+id/playButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@null"
             android:elevation="2dp"
-            android:src="@drawable/baseline_play_arrow_24" />
+            app:layout_constraintBottom_toBottomOf="@+id/ivMovieBackdrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/ivMovieBackdrop"
+            app:layout_constraintTop_toTopOf="@+id/ivMovieBackdrop">
+
+            <ImageButton
+                android:id="@+id/btPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@null"
+                android:contentDescription="@string/play"
+                android:elevation="2dp"
+                android:src="@drawable/baseline_play_arrow_24" />
+
+            <TextView
+                android:id="@+id/tvWatchTrailer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btPlay"
+                android:layout_marginTop="-15dp"
+                android:text="@string/watch_trailer"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieTrailerLoading"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivMovieBackdrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="moody-giraffe.json"
+            app:lottie_loop="true" />
+
+        <ImageView
+            android:id="@+id/ivMovieBackdrop"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/black"
+            android:contentDescription="@string/poster"
+            android:tintMode="src_atop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#5F000000">
+        </ImageView>
+
         <TextView
-            android:id="@+id/watchTrailerText"
+            android:id="@+id/tvLoading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/playButton"
-            android:text="@string/watch_trailer"
-            android:layout_marginTop="-15dp"
+            android:text="@string/loading"
             android:textColor="@color/white"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textSize="20sp"/>
-    </RelativeLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lottieTrailerLoading" />
 
-    <ImageView
-        android:id="@+id/movieBackdrop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:backgroundTint="@color/black"
-        android:src="@drawable/baseline_local_movies_24"
-        android:contentDescription="@string/poster"
-        android:tintMode="src_atop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="#4F000000">
-    </ImageView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/imageContrainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/movieBackdrop"
-        android:backgroundTint="@color/black"
-        android:orientation="vertical"
-        app:cardElevation="2dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="15dp"
-        app:cardCornerRadius="5dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movieBackdrop">
-        <ImageView
-            android:id="@+id/moviePoster"
-            android:layout_width="100dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ivContainer"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/poster"
-            android:src="@drawable/baseline_local_movies_24" />
-    </androidx.cardview.widget.CardView>
+            android:layout_below="@id/ivMovieBackdrop"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/black"
+            android:orientation="vertical"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivMovieBackdrop">
 
-    <TextView
-        android:id="@+id/movieTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="10dp"
-        android:hint="@string/movie_title"
-        android:singleLine="false"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:maxLines="3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageContrainer"
-        app:layout_constraintTop_toTopOf="@+id/imageContrainer" />
+            <ImageView
+                android:id="@+id/ivMoviePoster"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/poster"
+                android:src="@drawable/baseline_local_movies_24" />
+        </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/ratingBar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:progress="70"
-        app:trackThickness="5dp"
-        app:trackCornerRadius="10dp"
-        app:trackColor="#40E50914"
-        app:indicatorSize="60dp"
-        app:layout_constraintStart_toEndOf="@+id/imageContrainer"
-        app:layout_constraintTop_toBottomOf="@+id/movieTitle" />
+        <TextView
+            android:id="@+id/tvMovieTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/movie_title"
+            android:maxLines="3"
+            android:singleLine="false"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivContainer"
+            app:layout_constraintTop_toTopOf="@+id/ivContainer" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="@string/user_nscore"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
-        app:layout_constraintStart_toEndOf="@+id/ratingBar"
-        app:layout_constraintTop_toTopOf="@+id/ratingBar" />
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/piRatingBar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:progress="70"
+            app:indicatorSize="60dp"
+            app:layout_constraintStart_toEndOf="@+id/ivContainer"
+            app:layout_constraintTop_toBottomOf="@+id/tvMovieTitle"
+            app:trackColor="#40E50914"
+            app:trackCornerRadius="10dp"
+            app:trackThickness="5dp" />
 
-    <TextView
-        android:id="@+id/ratingPercentage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/percentage_hint"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
-        app:layout_constraintEnd_toEndOf="@+id/ratingBar"
-        app:layout_constraintStart_toStartOf="@+id/ratingBar"
-        app:layout_constraintTop_toTopOf="@+id/ratingBar" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/user_nscore"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/piRatingBar"
+            app:layout_constraintStart_toEndOf="@+id/piRatingBar"
+            app:layout_constraintTop_toTopOf="@+id/piRatingBar" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/favoritButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/grey"
-        android:src="@drawable/baseline_favorite_border_24"
-        app:backgroundTint="@color/grey"
-        app:elevation="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/ratingBar" />
+        <TextView
+            android:id="@+id/tvRatingPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/percentage_hint"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/piRatingBar"
+            app:layout_constraintEnd_toEndOf="@+id/piRatingBar"
+            app:layout_constraintStart_toStartOf="@+id/piRatingBar"
+            app:layout_constraintTop_toTopOf="@+id/piRatingBar" />
 
-    <TextView
-        android:id="@+id/overviewHead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/overview"
-        android:textColor="@color/white"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/grey"
+            android:contentDescription="@string/add_to_favorite"
+            android:src="@drawable/baseline_favorite_border_24"
+            app:backgroundTint="@color/grey"
+            app:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/piRatingBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/piRatingBar" />
 
-    <TextView
-        android:id="@+id/overviewContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:hint="@string/overview"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/overviewHead" />
+        <TextView
+            android:id="@+id/tvOverviewHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/overview"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivContainer" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvOverviewContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/overview"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@+id/tvOverviewHead" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

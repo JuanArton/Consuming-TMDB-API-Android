@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey">#5d5d5d</color>
+    <color name="red">#1a1a26</color>
+    <color name="badRate">#db2360</color>
+    <color name="badRateTrack">#40db2360</color>
+    <color name="normalRate">#d2d531</color>
+    <color name="normalRateTrack">#40d2d531</color>
+    <color name="goodRate">#21d07a</color>
+    <color name="goodRateTrack">#4021d07a</color>
+    <color name="bottomBarGrey">#5d5d5d</color>
+</resources>

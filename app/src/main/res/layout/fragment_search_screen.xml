@@ -28,7 +28,7 @@
         android:focusable="true" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchRecyclerContainer"
+        android:id="@+id/rvSearch"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingStart="10dp"
@@ -41,23 +41,23 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/refreshAnimation"
+        android:id="@+id/lottieSearchLoading"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toBottomOf="@+id/searchRecyclerContainer"
-        app:layout_constraintEnd_toEndOf="@+id/searchRecyclerContainer"
+        app:layout_constraintBottom_toBottomOf="@+id/rvSearch"
+        app:layout_constraintEnd_toEndOf="@+id/rvSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBar"
         app:lottie_fileName="nodata.json"
         app:lottie_loop="true" />
 
     <TextView
-        android:id="@+id/nodataText"
+        android:id="@+id/tvSearcNoData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/refreshAnimation"
+        android:layout_below="@id/lottieSearchLoading"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:text="@string/no_data"
@@ -65,6 +65,6 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/refreshAnimation"/>
+        app:layout_constraintTop_toBottomOf="@+id/lottieSearchLoading"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
