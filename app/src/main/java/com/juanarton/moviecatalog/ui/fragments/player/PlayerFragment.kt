@@ -109,4 +109,11 @@ class PlayerFragment : Fragment() {
                 }
             })
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        binding?.youtubePlayerView?.release()
+        _binding = null
+    }
 }

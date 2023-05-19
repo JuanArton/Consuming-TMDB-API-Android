@@ -19,6 +19,7 @@ import com.juanarton.core.data.utils.DataMapper
 import com.juanarton.moviecatalog.R
 import com.juanarton.moviecatalog.databinding.FragmentSearchScreenBinding
 import com.juanarton.moviecatalog.ui.activity.detail.DetailMovieActivity
+import com.juanarton.moviecatalog.utils.DataHolder
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -46,8 +47,8 @@ class SearchScreenFragment : Fragment() {
 
         val listener: (Movie) -> Unit = {
             val mappedToMovie = DataMapper.mapSearchToMovieDomain(it)
+            DataHolder.movie = mappedToMovie
             val intent = Intent(context, DetailMovieActivity::class.java)
-            intent.putExtra("movieData", mappedToMovie)
             startActivity(intent)
         }
 
@@ -109,5 +110,11 @@ class SearchScreenFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        _binding = null
     }
 }

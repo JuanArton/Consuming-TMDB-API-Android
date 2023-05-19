@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -25,6 +26,7 @@ import com.juanarton.core.data.source.remote.Resource
 import com.juanarton.moviecatalog.R
 import com.juanarton.moviecatalog.databinding.ActivityDetailMovieBinding
 import com.juanarton.moviecatalog.ui.fragments.player.PlayerFragment
+import com.juanarton.moviecatalog.utils.DataHolder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -39,11 +41,7 @@ class DetailMovieActivity : AppCompatActivity() {
         _binding = ActivityDetailMovieBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        val movieData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra("movieData", Movie::class.java)
-        } else {
-            intent.getParcelableExtra("movieData")
-        }
+        val movieData = DataHolder.movie
 
         val trailerItemList: MutableList<String> = mutableListOf()
         val trailerList: MutableList<Trailer> = mutableListOf()
@@ -249,5 +247,11 @@ class DetailMovieActivity : AppCompatActivity() {
         layoutParams.width = width.toInt()
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
         dialog.window?.attributes = layoutParams
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        DataHolder.movie = null
     }
 }

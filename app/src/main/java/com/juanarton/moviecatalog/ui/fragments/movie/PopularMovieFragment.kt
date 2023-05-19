@@ -17,6 +17,7 @@ import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.moviecatalog.R
 import com.juanarton.moviecatalog.databinding.FragmentPopularMovieBinding
 import com.juanarton.moviecatalog.ui.activity.detail.DetailMovieActivity
+import com.juanarton.moviecatalog.utils.DataHolder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -52,8 +53,8 @@ class PopularMovieFragment : Fragment() {
         imgCarousel?.registerLifecycle(lifecycle)
 
         val listener: (Movie) -> Unit = {
+            DataHolder.movie = it
             val intent = Intent(context, DetailMovieActivity::class.java)
-            intent.putExtra("movieData", it)
             startActivity(intent)
         }
 
@@ -143,5 +144,11 @@ class PopularMovieFragment : Fragment() {
                 imgCarousel?.setData(carouselList.shuffled())
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        _binding = null
     }
 }
