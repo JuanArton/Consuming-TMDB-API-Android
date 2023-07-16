@@ -1,32 +1,24 @@
 package com.juanarton.moviecatalog.ui.activity.detail
 
-import android.app.Dialog
-import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.ArrayAdapter
 import android.widget.ListView
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.juanarton.core.BuildConfig
+import com.juanarton.core.adapter.TrailerListAdapter
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.source.remote.Resource
 import com.juanarton.moviecatalog.R
 import com.juanarton.moviecatalog.databinding.ActivityDetailMovieBinding
-import com.juanarton.moviecatalog.ui.fragments.player.PlayerFragment
 import com.juanarton.moviecatalog.utils.DataHolder
+import jp.wasabeef.glide.transformations.BlurTransformation
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -46,11 +38,6 @@ class DetailMovieActivity : AppCompatActivity() {
         val trailerItemList: MutableList<String> = mutableListOf()
         val trailerList: MutableList<Trailer> = mutableListOf()
 
-        val rowList = layoutInflater.inflate(R.layout.trailer_list_pop_up_dialog, null)
-        val trailerListView = rowList.findViewById<ListView>(R.id.listTrailer)
-
-        val dialog = AlertDialog.Builder(this).setView(rowList).create()
-
         movieData?.let {movie ->
             detailMovieViewModel.setProperty(movie)
             detailMovieViewModel.checkFavorite()
@@ -59,25 +46,22 @@ class DetailMovieActivity : AppCompatActivity() {
 
             binding?.apply {
 
-                btPlay.isVisible = false
-                tvWatchTrailer.isVisible = false
-
                 detailMovieViewModel.isFav.observe(this@DetailMovieActivity){ favStat ->
                     when (favStat) {
                         false -> {
-                            btFavorite.setImageDrawable(
+                            /*btFavorite.setImageDrawable(
                                 ContextCompat.getDrawable(
                                     this@DetailMovieActivity, R.drawable.baseline_favorite_border_24
                                 )
                             )
-                            detailMovieViewModel.setFav(favStat)
+                            detailMovieViewModel.setFav(favStat)*/
                         }
                         true -> {
-                            btFavorite.setImageDrawable(
+                            /*btFavorite.setImageDrawable(
                                 ContextCompat.getDrawable(
                                     this@DetailMovieActivity, R.drawable.baseline_favorite_24
                                 )
-                            )
+                            )*/
                             detailMovieViewModel.setFav(favStat)
                         }
                     }
@@ -91,8 +75,6 @@ class DetailMovieActivity : AppCompatActivity() {
                                     if (trailerData.isNotEmpty()){
                                         tvLoading.isVisible = false
                                         lottieTrailerLoading.isVisible = false
-                                        btPlay.isVisible = true
-                                        tvWatchTrailer.isVisible = true
                                     }
                                     trailerList.addAll(trailerData)
                                     trailerItemList.addAll(
@@ -105,9 +87,7 @@ class DetailMovieActivity : AppCompatActivity() {
                             } else {
                                 Log.d("trailerData", "emptyData")
                                 tvLoading.text = resources.getString(R.string.noTrailer)
-                                tvWatchTrailer.isVisible = false
                                 lottieTrailerLoading.isVisible = false
-                                btPlay.isVisible = false
                             }
                         is Resource.Loading -> Log.d("trailerData", "Loading")
                         is Resource.Error -> {
@@ -116,40 +96,30 @@ class DetailMovieActivity : AppCompatActivity() {
                             } else {
                                 tvLoading.text = resources.getString(R.string.failedFetchData)
                             }
-                            tvWatchTrailer.isVisible = false
                             lottieTrailerLoading.isVisible = false
-                            btPlay.isVisible = false
                             Log.d("trailerData1", trailer.message.toString())
                         }
                     }
                 }
 
-                btFavorite.setOnClickListener {
+                btPlayTrailer.setOnClickListener {
+                    val dialog = BottomSheetDialog(this@DetailMovieActivity)
+                    val sheet = layoutInflater.inflate(R.layout.trailer_bottom_sheet, findViewById(android.R.id.content), false)
+                    dialog.setContentView(sheet)
+                    dialog.show()
+
+                    val trailerListView = sheet.findViewById<ListView>(R.id.lvTrailer)
+                    val adapter = TrailerListAdapter(this@DetailMovieActivity, trailerItemList, trailerList)
+                    trailerListView.adapter = adapter
+                }
+
+                /*btFavorite.setOnClickListener {
                     if (detailMovieViewModel._isFav.value == true){
                         detailMovieViewModel.deleteFromFav(movieData)
                     } else {
                         detailMovieViewModel.insertMovieFavorite(movieData)
                     }
-                }
-
-                btPlay.setOnClickListener {
-                    buildDialogBox(trailerItemList, trailerListView, dialog)
-                }
-
-                trailerListView.setOnItemClickListener{ _, _, position, _ ->
-                    val playerFragment = PlayerFragment()
-                    val mBundle = Bundle()
-                    mBundle.putString("videoID", trailerList[position].key)
-                    playerFragment.arguments = mBundle
-
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(android.R.id.content, playerFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .commit()
-
-                    dialog.hide()
-                }
+                }*/
             }
         }
     }
@@ -167,8 +137,6 @@ class DetailMovieActivity : AppCompatActivity() {
             }
 
             if (movie.backdropPath.isNullOrEmpty()){
-                btPlay.isVisible = false
-                tvWatchTrailer.text = resources.getString(R.string.noTrailer)
 
                 val height = 236 * this@DetailMovieActivity.resources.displayMetrics.density
                 ivMovieBackdrop.layoutParams.height = height.toInt()
@@ -179,27 +147,7 @@ class DetailMovieActivity : AppCompatActivity() {
             } else {
                 Glide.with(this@DetailMovieActivity)
                     .load(backdropLink)
-                    .listener(object : RequestListener<Drawable> {
-                        override fun onLoadFailed(
-                            e: GlideException?,
-                            model: Any?,
-                            target: com.bumptech.glide.request.target.Target<Drawable>?,
-                            isFirstResource: Boolean
-                        ): Boolean {
-                            return false
-                        }
-                        override fun onResourceReady(
-                            resource: Drawable?,
-                            model: Any?,
-                            target: com.bumptech.glide.request.target.Target<Drawable>?,
-                            dataSource: DataSource?,
-                            isFirstResource: Boolean
-                        ): Boolean {
-                            ivMovieBackdrop.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
-                            ivMovieBackdrop.requestLayout()
-                            return false
-                        }
-                    })
+                    .transform(CenterCrop(), BlurTransformation(20))
                     .into(ivMovieBackdrop)
             }
 
@@ -230,23 +178,6 @@ class DetailMovieActivity : AppCompatActivity() {
             }
             tvRatingPercentage.text = rating.toString()
         }
-    }
-    private fun buildDialogBox(
-        trailerItemList: List<String>,
-        trailerListView: ListView,
-        dialog: Dialog
-    ){
-        val mAdapter = ArrayAdapter(this, R.layout.trailer_item_view, R.id.text_view, trailerItemList)
-        trailerListView.adapter = mAdapter
-
-        dialog.show()
-
-        val width = 350 * this.resources.displayMetrics.density
-        val layoutParams = WindowManager.LayoutParams()
-        layoutParams.copyFrom(dialog.window?.attributes)
-        layoutParams.width = width.toInt()
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
-        dialog.window?.attributes = layoutParams
     }
 
     override fun onDestroy() {

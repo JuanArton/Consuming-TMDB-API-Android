@@ -17,4 +17,5 @@
     <string name="add_to_favorite">Add To Favorite</string>
     <string name="play">Play</string>
     <string name="failedFetchData">Failed to fetch data :(</string>
+    <string name="close">Close</string>
 </resources>
