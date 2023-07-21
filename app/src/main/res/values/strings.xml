@@ -11,11 +11,8 @@
     <string name="watch_trailer">Watch Trailer</string>
     <string name="movie_title">Movie Title</string>
     <string name="percentage_hint">0</string>
-    <string name="user_nscore">User \nScore</string>
     <string name="overview">Overview</string>
     <string name="noTrailer">No Trailer Available :(</string>
-    <string name="add_to_favorite">Add To Favorite</string>
-    <string name="play">Play</string>
     <string name="failedFetchData">Failed to fetch data :(</string>
     <string name="close">Close</string>
 </resources>

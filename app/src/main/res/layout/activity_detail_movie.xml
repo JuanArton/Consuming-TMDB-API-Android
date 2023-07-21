@@ -141,46 +141,51 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btPlayTrailer"
             android:layout_width="300dp"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/red"
-            android:background="@drawable/more_rounded_corner"
             android:text="@string/watch_trailer"
             android:textAllCaps="false"
             android:layout_marginTop="20dp"
             android:gravity="center"
+            app:cornerRadius="50dp"
+            app:iconSize="40dp"
             app:iconPadding="1dp"
             app:iconGravity="textStart"
-            app:icon="@drawable/baseline_play_arrow_24"
+            app:icon="@drawable/baseline_play_arrow_36"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMovieTitle" />
-
-        <TextView
-            android:id="@+id/tvOverviewHead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/overview"
-            android:textColor="@color/white"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btPlayTrailer" />
 
         <TextView
             android:id="@+id/tvOverviewContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:hint="@string/overview"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@+id/tvOverviewHead" />
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@+id/btPlayTrailer" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favorite"
+            android:textAllCaps="false"
+            android:textSize="11sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            app:iconSize="18dp"
+            app:backgroundTint="@color/black"
+            app:cornerRadius="50dp"
+            app:icon="@drawable/baseline_favorite_border_18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOverviewContent"
+            app:strokeColor="@color/white"
+            app:strokeWidth="1dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

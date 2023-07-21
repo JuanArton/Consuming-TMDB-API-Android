@@ -1,7 +1,6 @@
 package com.juanarton.core.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,11 @@ import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.databinding.TrailerItemViewBinding
 
 class TrailerListAdapter(
+    private val onClick: (String) -> Unit,
     context: Context,
-    private val trailerTitle: List<String>,
+    private val title: String?,
     private val trailerItemList: List<Trailer>
-) : ArrayAdapter<String>(context, 0, trailerTitle) {
+) : ArrayAdapter<Trailer>(context, 0, trailerItemList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val binding: TrailerItemViewBinding
@@ -27,18 +27,23 @@ class TrailerListAdapter(
             binding = convertView.tag as TrailerItemViewBinding
         }
 
-        val title = trailerTitle[position]
         val id = trailerItemList[position].key
-
-        binding.tvTrailerTitle.text = title
 
         val thumbnailUrl = "https://img.youtube.com/vi/$id/hqdefault.jpg"
 
-        Glide.with(context)
-            .load(thumbnailUrl)
-            .into(binding.ivTrailerThumbnail)
+        binding.apply {
+            Glide.with(context)
+                .load(thumbnailUrl)
+                .into(binding.ivTrailerThumbnail)
 
-        Log.d("trailer", thumbnailUrl)
+            val tempPosition = position+1
+            val title = "Trailer $tempPosition - $title"
+            tvTrailerTitle.text = title
+
+            root.setOnClickListener {
+                onClick(id)
+            }
+        }
 
         return binding.root
     }

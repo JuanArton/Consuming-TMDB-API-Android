@@ -4,4 +4,5 @@
     <string name="movie_title">Movie Title</string>
     <string name="percentage_hint">0</string>
     <string name="overview">Overview</string>
+    <string name="trailer_thumbnail">Trailer Thumbnail</string>
 </resources>

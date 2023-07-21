@@ -1,15 +1,20 @@
 package com.juanarton.moviecatalog.ui.activity.detail
 
+import android.content.res.ColorStateList
+import android.graphics.RenderEffect
+import android.graphics.Shader
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.button.MaterialButton
 import com.juanarton.core.BuildConfig
 import com.juanarton.core.adapter.TrailerListAdapter
 import com.juanarton.core.data.domain.model.Movie
@@ -17,10 +22,10 @@ import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.source.remote.Resource
 import com.juanarton.moviecatalog.R
 import com.juanarton.moviecatalog.databinding.ActivityDetailMovieBinding
+import com.juanarton.moviecatalog.ui.fragments.player.PlayerFragment
 import com.juanarton.moviecatalog.utils.DataHolder
 import jp.wasabeef.glide.transformations.BlurTransformation
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class DetailMovieActivity : AppCompatActivity() {
 
@@ -35,7 +40,9 @@ class DetailMovieActivity : AppCompatActivity() {
 
         val movieData = DataHolder.movie
 
-        val trailerItemList: MutableList<String> = mutableListOf()
+        val dialog = BottomSheetDialog(this@DetailMovieActivity)
+        val sheet = layoutInflater.inflate(R.layout.trailer_bottom_sheet, findViewById(android.R.id.content), false)
+
         val trailerList: MutableList<Trailer> = mutableListOf()
 
         movieData?.let {movie ->
@@ -49,19 +56,27 @@ class DetailMovieActivity : AppCompatActivity() {
                 detailMovieViewModel.isFav.observe(this@DetailMovieActivity){ favStat ->
                     when (favStat) {
                         false -> {
-                            /*btFavorite.setImageDrawable(
-                                ContextCompat.getDrawable(
-                                    this@DetailMovieActivity, R.drawable.baseline_favorite_border_24
-                                )
+                            val color = ColorStateList.valueOf(
+                                ContextCompat.getColor(this@DetailMovieActivity, R.color.white)
                             )
-                            detailMovieViewModel.setFav(favStat)*/
+                            btFavorite.apply {
+                                setIconResource(R.drawable.baseline_favorite_border_18)
+                                strokeColor = color
+                                setTextColor(color)
+                                iconTint = color
+                            }
+                            detailMovieViewModel.setFav(favStat)
                         }
                         true -> {
-                            /*btFavorite.setImageDrawable(
-                                ContextCompat.getDrawable(
-                                    this@DetailMovieActivity, R.drawable.baseline_favorite_24
-                                )
-                            )*/
+                            val color = ColorStateList.valueOf(
+                                ContextCompat.getColor(this@DetailMovieActivity, R.color.red)
+                            )
+                            btFavorite.apply {
+                                setIconResource(R.drawable.ic_baseline_favorite_24)
+                                strokeColor = color
+                                setTextColor(color)
+                                iconTint = color
+                            }
                             detailMovieViewModel.setFav(favStat)
                         }
                     }
@@ -77,12 +92,6 @@ class DetailMovieActivity : AppCompatActivity() {
                                         lottieTrailerLoading.isVisible = false
                                     }
                                     trailerList.addAll(trailerData)
-                                    trailerItemList.addAll(
-                                        List(trailerData.size) { index ->
-                                            val modIndex = index + 1
-                                            "Trailer $modIndex"
-                                        }
-                                    )
                                 }
                             } else {
                                 Log.d("trailerData", "emptyData")
@@ -103,23 +112,41 @@ class DetailMovieActivity : AppCompatActivity() {
                 }
 
                 btPlayTrailer.setOnClickListener {
-                    val dialog = BottomSheetDialog(this@DetailMovieActivity)
-                    val sheet = layoutInflater.inflate(R.layout.trailer_bottom_sheet, findViewById(android.R.id.content), false)
                     dialog.setContentView(sheet)
                     dialog.show()
+                    dialog.setCancelable(false)
 
                     val trailerListView = sheet.findViewById<ListView>(R.id.lvTrailer)
-                    val adapter = TrailerListAdapter(this@DetailMovieActivity, trailerItemList, trailerList)
+                    val listener: (String) -> Unit = {
+                        val playerFragment = PlayerFragment()
+                        val mBundle = Bundle()
+                        mBundle.putString("videoID", it)
+                        playerFragment.arguments = mBundle
+
+                        dialog.dismiss()
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .replace(android.R.id.content, playerFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            .commit()
+                    }
+                    val adapter = TrailerListAdapter(listener, this@DetailMovieActivity, movie.title, trailerList)
                     trailerListView.adapter = adapter
                 }
 
-                /*btFavorite.setOnClickListener {
+                btFavorite.setOnClickListener {
                     if (detailMovieViewModel._isFav.value == true){
                         detailMovieViewModel.deleteFromFav(movieData)
                     } else {
                         detailMovieViewModel.insertMovieFavorite(movieData)
                     }
-                }*/
+                }
+
+                val btCloseBottomSheet = sheet.findViewById<MaterialButton>(R.id.btClose)
+                btCloseBottomSheet.setOnClickListener {
+                    dialog.dismiss()
+                }
             }
         }
     }
@@ -145,10 +172,24 @@ class DetailMovieActivity : AppCompatActivity() {
                     .load(R.drawable.baseline_broken_image_24)
                     .into(ivMovieBackdrop)
             } else {
-                Glide.with(this@DetailMovieActivity)
-                    .load(backdropLink)
-                    .transform(CenterCrop(), BlurTransformation(20))
-                    .into(ivMovieBackdrop)
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                    Glide.with(this@DetailMovieActivity)
+                        .load(backdropLink)
+                        .transform(CenterCrop(), BlurTransformation(20))
+                        .into(ivMovieBackdrop)
+                } else {
+                    Glide.with(this@DetailMovieActivity)
+                        .asBitmap()
+                        .load(backdropLink)
+                        .centerCrop()
+                        .into(ivMovieBackdrop)
+
+                    ivMovieBackdrop.setRenderEffect(
+                        RenderEffect.createBlurEffect(
+                            20.0F, 20.0F, Shader.TileMode.CLAMP
+                        )
+                    )
+                }
             }
 
             Glide.with(this@DetailMovieActivity)
