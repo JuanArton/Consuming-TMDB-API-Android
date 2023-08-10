@@ -3,12 +3,15 @@ package com.juanarton.moviecatalog
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.juanarton.moviecatalog.databinding.ActivityMainBinding
 import com.juanarton.moviecatalog.ui.fragments.movie.PopularMovieFragment
 import com.juanarton.moviecatalog.ui.fragments.search.SearchScreenFragment
 import com.juanarton.moviecatalog.ui.fragments.tvShow.PopularTvShowFragment
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
+        
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 

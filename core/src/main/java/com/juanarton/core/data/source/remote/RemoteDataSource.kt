@@ -41,9 +41,9 @@ class RemoteDataSource{
 
     private suspend fun getTrailer(id: Int, mode: String): List<VideoTrailerResponse>{
         val trailer = when(mode){
-            Mode.TVSHOW.mode -> API.services.getMovieVideo(Mode.TVSHOW.mode, id, BuildConfig.API_KEY, "en")
+            Mode.TVSHOW.mode -> API.services.getMovieVideo(Mode.TVSHOW.mode, id, "en")
             else -> {
-                API.services.getMovieVideo(Mode.MOVIE.mode, id, BuildConfig.API_KEY, "en")
+                API.services.getMovieVideo(Mode.MOVIE.mode, id, "en")
             }
         }
         return trailer.responseList
@@ -61,7 +61,7 @@ class RemoteDataSource{
             override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
                 return try {
                     val position = params.key ?: 1
-                    val searchResult = API.services.multiSearch(searchString, true, BuildConfig.API_KEY, "en", position).responseList
+                    val searchResult = API.services.multiSearch(searchString, true, "en", position).responseList
                     val mappedResult = DataMapper.mapSearchResponseToMovieDomain(searchResult)
                     LoadResult.Page(
                         data = mappedResult,
@@ -86,16 +86,15 @@ class RemoteDataSource{
                     when(mode){
                         0 -> movie.let { popularList ->
                             DataMapper.mapMovieResponseToMovieDomain(
-                                API.services.getPopularMovie(BuildConfig.API_KEY, "en", position).responseList
+                                API.services.getPopularMovie(language = "en", page = position).responseList
                             ).let (popularList::addAll)
                         }
                         1 -> movie.let { popularList ->
                             DataMapper.mapTvShowResponseToMovieDomain(
-                                API.services.getPopularTvShow(BuildConfig.API_KEY, "en", position).responseList
+                                API.services.getPopularTvShow(language = "en", page = position).responseList
                             ).let (popularList::addAll)
                         }
                     }
-                    Log.d("MovieData", movie.toString())
                     LoadResult.Page(
                         data = movie,
                         prevKey = if (position == 1) null else position - 1,

@@ -13,4 +13,11 @@
 
     <style name="Theme.TMDBCatalog" parent="Base.Theme.TMDBCatalog" />
 
+    <style name="Theme.MySplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/black</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/icon</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.TMDBCatalog</item>
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+    </style>
+
 </resources>

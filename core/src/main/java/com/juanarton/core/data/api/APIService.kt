@@ -9,33 +9,31 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface APIService {
-    @GET("3/movie/popular")
+    @GET("/popular")
     suspend fun getPopularMovie(
-        @Query("api_key") key: String,
+        @Query("mode") mode: String? = "movie",
         @Query("language") language: String,
         @Query("page") page: Int
     ): TMDBMovieResponse
 
-    @GET("3/tv/popular")
+    @GET("/popular")
     suspend fun getPopularTvShow(
-        @Query("api_key") key: String,
+        @Query("mode") mode: String? = "tv",
         @Query("language") language: String,
         @Query("page") page: Int
     ): TMDBTvShowResponse
 
-    @GET("3/" + "{mode}/" + "{movie_id}" + "/videos")
+    @GET("/trailer/" + "{movie_id}")
     suspend fun getMovieVideo(
-        @Path("mode")mode: String,
+        @Path("mode") mode: String,
         @Path("movie_id") id: Int,
-        @Query("api_key") key: String,
         @Query("language") language: String
     ): TMDBVideoResponse
 
-    @GET("/3/search/multi")
+    @GET("/search/multi")
     suspend fun multiSearch(
         @Query("query") searchString: String,
         @Query("include_adult") includeAdult: Boolean,
-        @Query("api_key") key: String,
         @Query("language") language: String,
         @Query("page") page: Int
     ): TMDBSearchResponse
