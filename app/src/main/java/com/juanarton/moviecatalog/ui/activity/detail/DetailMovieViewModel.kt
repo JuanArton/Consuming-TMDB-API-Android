@@ -18,6 +18,10 @@ class DetailMovieViewModel(private val tmdbRepositoryUseCase: TMDBRepositoryUseC
     var _isFav: MutableLiveData<Boolean> = MutableLiveData(false)
     var isFav: LiveData<Boolean> = _isFav
 
+    val movieDetail = movie.switchMap {
+        tmdbRepositoryUseCase.getMovieDetail(it.id).asLiveData()
+    }
+
     fun setProperty(id: Movie){
         this.movie.value = id
     }

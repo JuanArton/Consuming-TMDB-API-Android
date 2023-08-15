@@ -1,6 +1,7 @@
 package com.juanarton.core.data.domain.usecase
 
 import androidx.paging.PagingData
+import com.juanarton.core.data.domain.model.DetailMovie
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.source.local.room.FavoriteEntity
@@ -18,4 +19,5 @@ interface TMDBRepositoryUseCase {
     fun deleteFromFav(movie: Movie)
     fun getFavDetail(id: String): Flow<FavoriteEntity>
     fun updateFavorite(movie: Movie)
+    fun getMovieDetail(id: String): Flow<Resource<DetailMovie>>
 }

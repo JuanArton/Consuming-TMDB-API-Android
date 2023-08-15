@@ -15,4 +15,8 @@
     <string name="noTrailer">No Trailer Available :(</string>
     <string name="failedFetchData">Failed to fetch data :(</string>
     <string name="close">Close</string>
+    <string name="genres">Genres</string>
+    <string name="runtime">Runtime</string>
+    <string name="release_date">Release Date</string>
+    <string name="trailer">Trailer</string>
 </resources>

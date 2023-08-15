@@ -1,10 +1,13 @@
 package com.juanarton.core.data.repository
 
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.juanarton.core.data.api.APIResponse
+import com.juanarton.core.data.api.movie.MovieDetailResponse
 import com.juanarton.core.data.api.video.VideoTrailerResponse
+import com.juanarton.core.data.domain.model.DetailMovie
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.domain.repository.TMDBRepositoryInterface
@@ -15,6 +18,7 @@ import com.juanarton.core.data.source.remote.RemoteDataSource
 import com.juanarton.core.data.source.remote.Resource
 import com.juanarton.core.data.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 
 class TMDBRepository(
@@ -76,6 +80,33 @@ class TMDBRepository(
             },
             initialKey = 1
         ).flow
+    }
+
+    override fun getMovieDetail(id: String): Flow<Resource<DetailMovie>> {
+        return object : NetworkBoundRes<DetailMovie, MovieDetailResponse>() {
+            override fun loadFromNetwork(data: MovieDetailResponse): Flow<DetailMovie> {
+                val genres = data.genres?.map { it.name }?.joinToString(separator = ", ")
+                val runtime = data.runtime?.let {
+                    if (it > 60) {
+                        val hours = it / 60
+                        val remainingMinutes = it % 60
+                        String.format("%02d hours %02d minutes", hours, remainingMinutes)
+                    } else {
+                        String.format("%02d", it)
+                    }
+                }
+                return flowOf(
+                    DetailMovie(
+                        runtime,
+                        genres
+                    )
+                )
+            }
+
+            override suspend fun createCall(): Flow<APIResponse<MovieDetailResponse>> {
+                return remoteDataSource.getMovieDetail(id.toInt())
+            }
+        }.asFlow()
     }
 
     override fun getListFavorite(): Flow<List<Movie>> {

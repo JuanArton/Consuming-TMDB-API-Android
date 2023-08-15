@@ -1,9 +1,11 @@
 package com.juanarton.core.data.utils
 
+import com.juanarton.core.data.api.movie.MovieDetailResponse
 import com.juanarton.core.data.api.movie.PopularMovieResponse
 import com.juanarton.core.data.api.search.SearchResponse
 import com.juanarton.core.data.api.tvShow.PopularTvShowResponse
 import com.juanarton.core.data.api.video.VideoTrailerResponse
+import com.juanarton.core.data.domain.model.DetailMovie
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.source.local.room.FavoriteEntity

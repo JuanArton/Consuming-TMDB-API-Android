@@ -1,6 +1,7 @@
 package com.juanarton.core.data.domain.usecase
 
 import androidx.paging.PagingData
+import com.juanarton.core.data.domain.model.DetailMovie
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.domain.repository.TMDBRepositoryInterface
@@ -21,4 +22,5 @@ class TMDBRepositoryInteractor(private val tmdbRepository: TMDBRepositoryInterfa
         TODO("Not yet implemented")
     }
     override fun updateFavorite(movie: Movie) = tmdbRepository.updateFavorite(movie)
+    override fun getMovieDetail(id: String): Flow<Resource<DetailMovie>> = tmdbRepository.getMovieDetail(id)
 }

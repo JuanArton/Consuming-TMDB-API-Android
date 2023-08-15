@@ -6,17 +6,21 @@ import android.graphics.Shader
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.juanarton.core.BuildConfig
-import com.juanarton.core.adapter.TrailerListAdapter
+import com.juanarton.core.adapter.TrailerAdapter
+import com.juanarton.core.data.domain.model.DetailMovie
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.source.remote.Resource
@@ -26,6 +30,7 @@ import com.juanarton.moviecatalog.ui.fragments.player.PlayerFragment
 import com.juanarton.moviecatalog.utils.DataHolder
 import jp.wasabeef.glide.transformations.BlurTransformation
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class DetailMovieActivity : AppCompatActivity() {
 
@@ -49,7 +54,18 @@ class DetailMovieActivity : AppCompatActivity() {
             detailMovieViewModel.setProperty(movie)
             detailMovieViewModel.checkFavorite()
 
-            setUI(movie)
+            detailMovieViewModel.movieDetail.observe(this) {
+                when(it){
+                    is Resource.Success -> {
+                        it.data?.let {detailMovie ->
+                            setUI(movie, detailMovie)
+                        }
+                    }
+                    is Resource.Loading -> Log.d("detailmMovie", "Loading")
+                    is Resource.Error -> {
+                    }
+                }
+            }
 
             binding?.apply {
 
@@ -91,7 +107,32 @@ class DetailMovieActivity : AppCompatActivity() {
                                         tvLoading.isVisible = false
                                         lottieTrailerLoading.isVisible = false
                                     }
-                                    trailerList.addAll(trailerData)
+                                    val listener: (Trailer) -> Unit = {
+                                        val playerFragment = PlayerFragment()
+                                        val mBundle = Bundle()
+                                        mBundle.putString("videoID", it.key)
+                                        playerFragment.arguments = mBundle
+
+                                        dialog.dismiss()
+
+                                        supportFragmentManager
+                                            .beginTransaction()
+                                            .replace(android.R.id.content, playerFragment)
+                                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                                            .commit()
+                                    }
+
+                                    rvTrailerItem.layoutManager = LinearLayoutManager(
+                                        this@DetailMovieActivity,
+                                        LinearLayoutManager.HORIZONTAL,
+                                        false
+                                    )
+                                    val rvAdapter = TrailerAdapter(listener, arrayListOf())
+                                    rvTrailerItem.adapter = rvAdapter
+                                    rvAdapter.setData(trailerData)
+                                    val snapHelper = PagerSnapHelper()
+                                    snapHelper.attachToRecyclerView(rvTrailerItem)
+                                    rvAdapter.notifyDataSetChanged()
                                 }
                             } else {
                                 Log.d("trailerData", "emptyData")
@@ -111,30 +152,6 @@ class DetailMovieActivity : AppCompatActivity() {
                     }
                 }
 
-                btPlayTrailer.setOnClickListener {
-                    dialog.setContentView(sheet)
-                    dialog.show()
-                    dialog.setCancelable(false)
-
-                    val trailerListView = sheet.findViewById<ListView>(R.id.lvTrailer)
-                    val listener: (String) -> Unit = {
-                        val playerFragment = PlayerFragment()
-                        val mBundle = Bundle()
-                        mBundle.putString("videoID", it)
-                        playerFragment.arguments = mBundle
-
-                        dialog.dismiss()
-
-                        supportFragmentManager
-                            .beginTransaction()
-                            .replace(android.R.id.content, playerFragment)
-                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                            .commit()
-                    }
-                    val adapter = TrailerListAdapter(listener, this@DetailMovieActivity, movie.title, trailerList)
-                    trailerListView.adapter = adapter
-                }
-
                 btFavorite.setOnClickListener {
                     if (detailMovieViewModel._isFav.value == true){
                         detailMovieViewModel.deleteFromFav(movieData)
@@ -151,7 +168,7 @@ class DetailMovieActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUI(movie: Movie) {
+    private fun setUI(movie: Movie, detailMovie: DetailMovie) {
         binding?.apply {
             val backdropLink = buildString {
                 append(BuildConfig.BASE_IMAGE_URL)
@@ -176,12 +193,13 @@ class DetailMovieActivity : AppCompatActivity() {
                     Glide.with(this@DetailMovieActivity)
                         .load(backdropLink)
                         .transform(CenterCrop(), BlurTransformation(20))
+                        .transition(DrawableTransitionOptions.withCrossFade())
                         .into(ivMovieBackdrop)
                 } else {
                     Glide.with(this@DetailMovieActivity)
-                        .asBitmap()
                         .load(backdropLink)
                         .centerCrop()
+                        .transition(DrawableTransitionOptions.withCrossFade())
                         .into(ivMovieBackdrop)
 
                     ivMovieBackdrop.setRenderEffect(
@@ -198,6 +216,9 @@ class DetailMovieActivity : AppCompatActivity() {
 
             tvMovieTitle.text = movie.title
             tvOverviewContent.text = movie.overview
+            tvGenres.text = detailMovie.genres
+            tvRuntime.text = detailMovie.runtime
+            tvReleaseDate.text = movie.releaseDate
 
             val rating = movie.voteAverage?.times(10)?.toInt()
             when(rating){

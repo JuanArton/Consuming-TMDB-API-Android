@@ -6,6 +6,7 @@ import androidx.paging.PagingState
 import com.juanarton.core.BuildConfig
 import com.juanarton.core.data.api.API
 import com.juanarton.core.data.api.APIResponse
+import com.juanarton.core.data.api.movie.MovieDetailResponse
 import com.juanarton.core.data.api.video.VideoTrailerResponse
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.utils.DataMapper
@@ -39,16 +40,6 @@ class RemoteDataSource{
             }
         }.flowOn(Dispatchers.IO)
 
-    private suspend fun getTrailer(id: Int, mode: String): List<VideoTrailerResponse>{
-        val trailer = when(mode){
-            Mode.TVSHOW.mode -> API.services.getMovieVideo(Mode.TVSHOW.mode, id, BuildConfig.API_KEY, "en")
-            else -> {
-                API.services.getMovieVideo(Mode.MOVIE.mode, id, BuildConfig.API_KEY, "en")
-            }
-        }
-        return trailer.responseList
-    }
-
     fun multiSearch(searchString: String): PagingSource<Int, Movie>{
         return object : PagingSource<Int, Movie>(){
             override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
@@ -74,6 +65,30 @@ class RemoteDataSource{
             }
 
         }
+    }
+
+    suspend fun getMovieDetail(id: Int): Flow<APIResponse<MovieDetailResponse>> =
+        flow {
+            val movieDetail = API.services.getMovieDetail(id, BuildConfig.API_KEY, "en")
+            try {
+                if (!movieDetail.genres.isNullOrEmpty() || movieDetail.runtime != null){
+                    emit(APIResponse.Success(movieDetail))
+                } else {
+                    emit(APIResponse.Error(null))
+                }
+            } catch (e: Exception) {
+                emit(APIResponse.Error(e.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+
+    private suspend fun getTrailer(id: Int, mode: String): List<VideoTrailerResponse> {
+        val trailer = when(mode){
+            Mode.TVSHOW.mode -> API.services.getMovieVideo(Mode.TVSHOW.mode, id, BuildConfig.API_KEY, "en")
+            else -> {
+                API.services.getMovieVideo(Mode.MOVIE.mode, id, BuildConfig.API_KEY, "en")
+            }
+        }
+        return trailer.responseList
     }
 
     // variable mode value 1 means should fetch tvShow Popular list, value 0 means movie

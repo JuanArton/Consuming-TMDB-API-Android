@@ -1,5 +1,6 @@
 package com.juanarton.core.data.api
 
+import com.juanarton.core.data.api.movie.MovieDetailResponse
 import com.juanarton.core.data.api.movie.TMDBMovieResponse
 import com.juanarton.core.data.api.search.TMDBSearchResponse
 import com.juanarton.core.data.api.tvShow.TMDBTvShowResponse
@@ -30,6 +31,13 @@ interface APIService {
         @Query("api_key") key: String,
         @Query("language") language: String
     ): TMDBVideoResponse
+
+    @GET("3/movie/{movie_id}")
+    suspend fun getMovieDetail(
+        @Path("movie_id") id: Int,
+        @Query("api_key") key: String,
+        @Query("language") language: String,
+    ): MovieDetailResponse
 
     @GET("/3/search/multi")
     suspend fun multiSearch(
