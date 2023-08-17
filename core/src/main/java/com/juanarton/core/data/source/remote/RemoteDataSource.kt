@@ -6,6 +6,8 @@ import androidx.paging.PagingState
 import com.juanarton.core.BuildConfig
 import com.juanarton.core.data.api.API
 import com.juanarton.core.data.api.APIResponse
+import com.juanarton.core.data.api.credits.CreditsResponse
+import com.juanarton.core.data.api.credits.TMDBCreditsResponse
 import com.juanarton.core.data.api.movie.MovieDetailResponse
 import com.juanarton.core.data.api.video.VideoTrailerResponse
 import com.juanarton.core.data.domain.model.Movie
@@ -78,6 +80,20 @@ class RemoteDataSource{
                 }
             } catch (e: Exception) {
                 emit(APIResponse.Error(e.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+
+    suspend fun getCreditList(id: Int): Flow<APIResponse<List<CreditsResponse>>> =
+        flow {
+            val creditList = API.services.getMovieCredits(id, BuildConfig.API_KEY, "en").cast
+            try {
+                if (creditList.isNotEmpty()) {
+                    emit(APIResponse.Success(creditList))
+                } else {
+                    emit(APIResponse.Error(null))
+                }
+            } catch (e: Exception) {
+                emit((APIResponse.Error(e.toString())))
             }
         }.flowOn(Dispatchers.IO)
 

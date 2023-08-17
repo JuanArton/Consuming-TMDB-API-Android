@@ -142,8 +142,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="@color/grey"
+            android:textColorHint="@color/grey"
             android:textSize="13sp"
             android:textStyle="bold"
             android:hint="@string/genres"
@@ -158,8 +158,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:hint="@string/release_date"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="@color/grey"
+            android:textColorHint="@color/grey"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="@+id/ivMovieBackdropGradient"
             app:layout_constraintStart_toEndOf="@id/ivContainer"
@@ -171,8 +171,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:hint="@string/runtime"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="@color/grey"
+            android:textColorHint="@color/grey"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivContainer"
@@ -204,8 +204,8 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
             android:hint="@string/overview"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="@color/grey"
+            android:textColorHint="@color/grey"
             android:textSize="13sp"
             app:layout_constraintTop_toBottomOf="@+id/btFavorite" />
 
@@ -231,6 +231,30 @@
             android:orientation="horizontal"
             android:clipToPadding="false"
             app:layout_constraintTop_toBottomOf="@id/tvTrailerHeader"/>
+
+        <TextView
+            android:id="@+id/tvCreditHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/credit"
+            android:textColor="@color/red"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvTrailerItem" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCreditItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCreditHeader" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

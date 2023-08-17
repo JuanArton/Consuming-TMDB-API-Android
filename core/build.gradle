@@ -21,6 +21,7 @@ android {
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/\""
         buildConfigField "String", "API_KEY", "\"xxx\""
         buildConfigField "String", "BASE_POSTER_URL", "\"https://www.themoviedb.org/t/p/w600_and_h900_bestv2\""
+        buildConfigField "String", "BASE_CREDIT_PHOTO_URL", "\"https://www.themoviedb.org/t/p/w138_and_h175_face\""
     }
 
     buildFeatures{

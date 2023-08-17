@@ -1,5 +1,6 @@
 package com.juanarton.core.data.api
 
+import com.juanarton.core.data.api.credits.TMDBCreditsResponse
 import com.juanarton.core.data.api.movie.MovieDetailResponse
 import com.juanarton.core.data.api.movie.TMDBMovieResponse
 import com.juanarton.core.data.api.search.TMDBSearchResponse
@@ -47,4 +48,11 @@ interface APIService {
         @Query("language") language: String,
         @Query("page") page: Int
     ): TMDBSearchResponse
+
+    @GET("/3/movie/{movie_id}/credits")
+    suspend fun getMovieCredits(
+        @Path("movie_id") id: Int,
+        @Query("api_key") key: String,
+        @Query("language") language: String,
+    ): TMDBCreditsResponse
 }

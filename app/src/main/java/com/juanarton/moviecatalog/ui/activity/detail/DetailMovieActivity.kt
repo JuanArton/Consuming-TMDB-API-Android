@@ -19,7 +19,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.juanarton.core.BuildConfig
+import com.juanarton.core.adapter.CreditAdapter
 import com.juanarton.core.adapter.TrailerAdapter
+import com.juanarton.core.data.domain.model.Credit
 import com.juanarton.core.data.domain.model.DetailMovie
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
@@ -48,8 +50,6 @@ class DetailMovieActivity : AppCompatActivity() {
         val dialog = BottomSheetDialog(this@DetailMovieActivity)
         val sheet = layoutInflater.inflate(R.layout.trailer_bottom_sheet, findViewById(android.R.id.content), false)
 
-        val trailerList: MutableList<Trailer> = mutableListOf()
-
         movieData?.let {movie ->
             detailMovieViewModel.setProperty(movie)
             detailMovieViewModel.checkFavorite()
@@ -68,7 +68,6 @@ class DetailMovieActivity : AppCompatActivity() {
             }
 
             binding?.apply {
-
                 detailMovieViewModel.isFav.observe(this@DetailMovieActivity){ favStat ->
                     when (favStat) {
                         false -> {
@@ -152,6 +151,37 @@ class DetailMovieActivity : AppCompatActivity() {
                     }
                 }
 
+                detailMovieViewModel.movieCredit().observe(this@DetailMovieActivity) { credit ->
+                    when(credit){
+                        is Resource.Success ->
+                            if (!credit.data.isNullOrEmpty()) {
+                                credit.data?.let { creditData ->
+                                    if (creditData.isNotEmpty()){
+                                        Log.d("creditData", creditData.toString())
+                                        val listener: (Credit) -> Unit = {
+                                        }
+
+                                        rvCreditItem.layoutManager = LinearLayoutManager(
+                                            this@DetailMovieActivity,
+                                            LinearLayoutManager.HORIZONTAL,
+                                            false
+                                        )
+
+                                        val rvAdapter = CreditAdapter(listener, arrayListOf())
+                                        rvCreditItem.adapter = rvAdapter
+                                        rvAdapter.setData(creditData)
+                                        rvAdapter.notifyDataSetChanged()
+                                    }
+                                }
+                            } else {
+                                Log.d("creditData", "emptyData")
+                            }
+                        is Resource.Loading -> Log.d("creditData", "Loading")
+                        is Resource.Error -> {
+                        }
+                    }
+                }
+
                 btFavorite.setOnClickListener {
                     if (detailMovieViewModel._isFav.value == true){
                         detailMovieViewModel.deleteFromFav(movieData)
@@ -192,7 +222,7 @@ class DetailMovieActivity : AppCompatActivity() {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
                     Glide.with(this@DetailMovieActivity)
                         .load(backdropLink)
-                        .transform(CenterCrop(), BlurTransformation(20))
+                        .transform(CenterCrop(), BlurTransformation(30))
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(ivMovieBackdrop)
                 } else {
@@ -204,7 +234,7 @@ class DetailMovieActivity : AppCompatActivity() {
 
                     ivMovieBackdrop.setRenderEffect(
                         RenderEffect.createBlurEffect(
-                            20.0F, 20.0F, Shader.TileMode.CLAMP
+                            30.0F, 30.0F, Shader.TileMode.CLAMP
                         )
                     )
                 }

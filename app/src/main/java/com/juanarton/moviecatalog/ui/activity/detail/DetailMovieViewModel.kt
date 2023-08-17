@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.switchMap
+import com.juanarton.core.data.domain.model.Credit
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
 import com.juanarton.core.data.domain.usecase.TMDBRepositoryUseCase
@@ -32,6 +33,10 @@ class DetailMovieViewModel(private val tmdbRepositoryUseCase: TMDBRepositoryUseC
 
     fun movieTrailer(): LiveData<Resource<List<Trailer>>> = movie.switchMap {
         tmdbRepositoryUseCase.getMovieTrailer(it.id, it.mediaType).asLiveData()
+    }
+
+    fun movieCredit(): LiveData<Resource<List<Credit>>> = movie.switchMap {
+        tmdbRepositoryUseCase.getCreditList(it.id).asLiveData()
     }
 
     fun insertMovieFavorite(movie: Movie) = CoroutineScope(Dispatchers.IO).launch {

@@ -1,6 +1,7 @@
 package com.juanarton.core.data.domain.usecase
 
 import androidx.paging.PagingData
+import com.juanarton.core.data.domain.model.Credit
 import com.juanarton.core.data.domain.model.DetailMovie
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
@@ -23,4 +24,5 @@ class TMDBRepositoryInteractor(private val tmdbRepository: TMDBRepositoryInterfa
     }
     override fun updateFavorite(movie: Movie) = tmdbRepository.updateFavorite(movie)
     override fun getMovieDetail(id: String): Flow<Resource<DetailMovie>> = tmdbRepository.getMovieDetail(id)
+    override fun getCreditList(id: String): Flow<Resource<List<Credit>>> = tmdbRepository.getCreditList(id)
 }

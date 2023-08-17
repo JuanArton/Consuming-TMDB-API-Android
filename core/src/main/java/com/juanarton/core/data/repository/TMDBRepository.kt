@@ -1,12 +1,13 @@
 package com.juanarton.core.data.repository
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.juanarton.core.data.api.APIResponse
+import com.juanarton.core.data.api.credits.CreditsResponse
 import com.juanarton.core.data.api.movie.MovieDetailResponse
 import com.juanarton.core.data.api.video.VideoTrailerResponse
+import com.juanarton.core.data.domain.model.Credit
 import com.juanarton.core.data.domain.model.DetailMovie
 import com.juanarton.core.data.domain.model.Movie
 import com.juanarton.core.data.domain.model.Trailer
@@ -105,6 +106,18 @@ class TMDBRepository(
 
             override suspend fun createCall(): Flow<APIResponse<MovieDetailResponse>> {
                 return remoteDataSource.getMovieDetail(id.toInt())
+            }
+        }.asFlow()
+    }
+
+    override fun getCreditList(id: String): Flow<Resource<List<Credit>>> {
+        return object  : NetworkBoundRes<List<Credit>, List<CreditsResponse>>() {
+            override fun loadFromNetwork(data: List<CreditsResponse>): Flow<List<Credit>> {
+                return DataMapper.mapCreditResponseToCreditDomain(data)
+            }
+
+            override suspend fun createCall(): Flow<APIResponse<List<CreditsResponse>>> {
+                return remoteDataSource.getCreditList(id.toInt())
             }
         }.asFlow()
     }
