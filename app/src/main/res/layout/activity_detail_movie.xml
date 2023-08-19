@@ -251,8 +251,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvCreditHeader" />
     </androidx.constraintlayout.widget.ConstraintLayout>
